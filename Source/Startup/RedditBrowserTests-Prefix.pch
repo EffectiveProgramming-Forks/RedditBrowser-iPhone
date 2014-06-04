@@ -1,0 +1,12 @@
+#ifndef RedditBrowser_RedditBrowserTests_Prefix_pch
+#define RedditBrowser_RedditBrowserTests_Prefix_pch
+
+#import "RedditBrowser-Prefix.pch"
+
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
+#endif
