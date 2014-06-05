@@ -2,4 +2,6 @@
 
 @implementation RBSubredditModel
 
+@synthesize delegateForModel;
+
 @end

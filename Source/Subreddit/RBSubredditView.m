@@ -9,6 +9,8 @@
 
 @implementation RBSubredditView
 
+@synthesize delegateForView;
+
 static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReuseIdentifier";
 
 - (instancetype)initWithFrame:(CGRect)frame {

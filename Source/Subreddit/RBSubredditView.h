@@ -1,9 +1,15 @@
 #import <UIKit/UIKit.h>
 
-@protocol RBSubredditView <NSObject>
+@protocol RBSubredditViewDelegate <NSObject>
 
 @end
 
-@interface RBSubredditView : UIView
+@protocol RBSubredditView <NSObject>
+
+@property (nonatomic, weak) id<RBSubredditViewDelegate> delegateForView;
+
+@end
+
+@interface RBSubredditView : UIView<RBSubredditView>
 
 @end
