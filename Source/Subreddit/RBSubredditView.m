@@ -16,11 +16,13 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _tableView = [[UITableView alloc] initWithFrame:frame];
+        _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+        _tableView.rowHeight = [RBSubredditTableViewCell heightForRow];
         _tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         [_tableView registerClass:[RBSubredditTableViewCell class] forCellReuseIdentifier:kRBSubredditViewCellReuseIdentifier];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        [self addSubview:_tableView];
     }
     return self;
 }
@@ -29,6 +31,10 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Listen To This";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -40,8 +46,12 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = @"Funny Pictures";
-    cell.detailTextLabel.text = @"Playing music";
+    cell.textLabel.text = @"A Rockstar Band";
+    cell.detailTextLabel.text = @"It's all about the little things";
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

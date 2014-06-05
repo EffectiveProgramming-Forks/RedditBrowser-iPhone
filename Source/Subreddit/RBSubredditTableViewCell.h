@@ -2,4 +2,6 @@
 
 @interface RBSubredditTableViewCell : UITableViewCell
 
++ (CGFloat)heightForRow;
+
 @end
