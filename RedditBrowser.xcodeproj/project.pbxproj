@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40A1942EC0900A8E300 /* RBURLValidator.m */; };
+		240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */; };
 		244296DF193DA18000207CAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296DE193DA18000207CAF /* Foundation.framework */; };
 		244296E1193DA18000207CAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E0193DA18000207CAF /* CoreGraphics.framework */; };
 		244296E3193DA18000207CAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E2193DA18000207CAF /* UIKit.framework */; };
@@ -18,14 +20,19 @@
 		24429722193DA20E00207CAF /* RBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2442971A193DA20E00207CAF /* RBAppDelegate.m */; };
 		24429723193DA20E00207CAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2442971C193DA20E00207CAF /* main.m */; };
 		24429726193DA22A00207CAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24429725193DA22A00207CAF /* Images.xcassets */; };
-		24C42C7C193DC91F0082BD27 /* RBSubredditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24C42C7B193DC91F0082BD27 /* RBSubredditViewController.m */; };
+		244D5A5919416DF400DD151E /* RBNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A4A19416DF400DD151E /* RBNetworkService.m */; };
+		244D5A5A19416DF400DD151E /* RBSubredditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A4E19416DF400DD151E /* RBSubredditModel.m */; };
+		244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5119416DF400DD151E /* RBSubredditRouter.m */; };
+		244D5A5E19416DF400DD151E /* RBSubredditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5419416DF400DD151E /* RBSubredditTableViewCell.m */; };
+		244D5A5F19416DF400DD151E /* RBSubredditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5619416DF400DD151E /* RBSubredditView.m */; };
+		244D5A6019416DF400DD151E /* RBSubredditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5819416DF400DD151E /* RBSubredditViewController.m */; };
+		244D5A6119416DFD00DD151E /* RBSubredditModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A4F19416DF400DD151E /* RBSubredditModelTests.m */; };
+		244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5219416DF400DD151E /* RBSubredditRouterTests.m */; };
+		244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */; };
+		244D5A671941786B00DD151E /* TestFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 244D5A661941786B00DD151E /* TestFeed.json */; };
+		244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */; };
+		244D5A731941FF7700DD151E /* ASYMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6B1941FF6D00DD151E /* ASYMacros.m */; };
 		24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C42C7D193DC9C30082BD27 /* Localizable.strings */; };
-		24DA44B0193E906800EFE6BC /* RBSubredditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44AF193E906800EFE6BC /* RBSubredditView.m */; };
-		24DA44B3193E91BC00EFE6BC /* RBSubredditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44B2193E91BC00EFE6BC /* RBSubredditTableViewCell.m */; };
-		24DA44B6193E924600EFE6BC /* RBSubredditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44B5193E924600EFE6BC /* RBSubredditModel.m */; };
-		24DA44B9193E939000EFE6BC /* RBSubredditRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44B8193E939000EFE6BC /* RBSubredditRouter.m */; };
-		24DA44BB193E950B00EFE6BC /* RBSubredditRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44BA193E950B00EFE6BC /* RBSubredditRouterTests.m */; };
-		24DA44BD193E952400EFE6BC /* RBSubredditModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DA44BC193E952400EFE6BC /* RBSubredditModelTests.m */; };
 		48781F28E5D24BFB9D7A1311 /* libPods-RedditBrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E8E49EA977433B9132FDD5 /* libPods-RedditBrowserTests.a */; };
 		6E3416FEE40B4455B09BB618 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D34C235B040C5B09B2F34 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -41,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		240ED4091942EC0900A8E300 /* RBURLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURLValidator.h; sourceTree = "<group>"; };
+		240ED40A1942EC0900A8E300 /* RBURLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidator.m; sourceTree = "<group>"; };
+		240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidatorTests.m; sourceTree = "<group>"; };
 		244296DB193DA18000207CAF /* RedditBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		244296DE193DA18000207CAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		244296E0193DA18000207CAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,19 +66,29 @@
 		2442971B193DA20E00207CAF /* RedditBrowser-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RedditBrowser-Prefix.pch"; sourceTree = "<group>"; };
 		2442971C193DA20E00207CAF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24429725193DA22A00207CAF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		24C42C7A193DC91F0082BD27 /* RBSubredditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditViewController.h; sourceTree = "<group>"; };
-		24C42C7B193DC91F0082BD27 /* RBSubredditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditViewController.m; sourceTree = "<group>"; };
+		244D5A4919416DF400DD151E /* RBNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBNetworkService.h; sourceTree = "<group>"; };
+		244D5A4A19416DF400DD151E /* RBNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBNetworkService.m; sourceTree = "<group>"; };
+		244D5A4D19416DF400DD151E /* RBSubredditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditModel.h; sourceTree = "<group>"; };
+		244D5A4E19416DF400DD151E /* RBSubredditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditModel.m; sourceTree = "<group>"; };
+		244D5A4F19416DF400DD151E /* RBSubredditModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditModelTests.m; sourceTree = "<group>"; };
+		244D5A5019416DF400DD151E /* RBSubredditRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditRouter.h; sourceTree = "<group>"; };
+		244D5A5119416DF400DD151E /* RBSubredditRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditRouter.m; sourceTree = "<group>"; };
+		244D5A5219416DF400DD151E /* RBSubredditRouterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditRouterTests.m; sourceTree = "<group>"; };
+		244D5A5319416DF400DD151E /* RBSubredditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditTableViewCell.h; sourceTree = "<group>"; };
+		244D5A5419416DF400DD151E /* RBSubredditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditTableViewCell.m; sourceTree = "<group>"; };
+		244D5A5519416DF400DD151E /* RBSubredditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditView.h; sourceTree = "<group>"; };
+		244D5A5619416DF400DD151E /* RBSubredditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditView.m; sourceTree = "<group>"; };
+		244D5A5719416DF400DD151E /* RBSubredditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditViewController.h; sourceTree = "<group>"; };
+		244D5A5819416DF400DD151E /* RBSubredditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditViewController.m; sourceTree = "<group>"; };
+		244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBNetworkServiceTests.m; sourceTree = "<group>"; };
+		244D5A661941786B00DD151E /* TestFeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFeed.json; sourceTree = "<group>"; };
+		244D5A6A1941FF6D00DD151E /* ASYMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASYMacros.h; sourceTree = "<group>"; };
+		244D5A6B1941FF6D00DD151E /* ASYMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASYMacros.m; sourceTree = "<group>"; };
+		244D5A6C1941FF6D00DD151E /* ASYTesting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASYTesting-Prefix.pch"; sourceTree = "<group>"; };
+		244D5A6D1941FF6D00DD151E /* ASYTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASYTesting.h; sourceTree = "<group>"; };
+		244D5A6E1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ASYAsynchronousTesting.h"; sourceTree = "<group>"; };
+		244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+ASYAsynchronousTesting.m"; sourceTree = "<group>"; };
 		24C42C7E193DC9C30082BD27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		24DA44AE193E906800EFE6BC /* RBSubredditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditView.h; sourceTree = "<group>"; };
-		24DA44AF193E906800EFE6BC /* RBSubredditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditView.m; sourceTree = "<group>"; };
-		24DA44B1193E91BC00EFE6BC /* RBSubredditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditTableViewCell.h; sourceTree = "<group>"; };
-		24DA44B2193E91BC00EFE6BC /* RBSubredditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditTableViewCell.m; sourceTree = "<group>"; };
-		24DA44B4193E924600EFE6BC /* RBSubredditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditModel.h; sourceTree = "<group>"; };
-		24DA44B5193E924600EFE6BC /* RBSubredditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditModel.m; sourceTree = "<group>"; };
-		24DA44B7193E939000EFE6BC /* RBSubredditRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditRouter.h; sourceTree = "<group>"; };
-		24DA44B8193E939000EFE6BC /* RBSubredditRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditRouter.m; sourceTree = "<group>"; };
-		24DA44BA193E950B00EFE6BC /* RBSubredditRouterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditRouterTests.m; sourceTree = "<group>"; };
-		24DA44BC193E952400EFE6BC /* RBSubredditModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditModelTests.m; sourceTree = "<group>"; };
 		24DA44BE193E967D00EFE6BC /* RedditBrowserTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedditBrowserTests-Prefix.pch"; sourceTree = "<group>"; };
 		32DAB1ADBDE54143940025E4 /* Pods-RedditBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditBrowserTests.xcconfig"; path = "Pods/Pods-RedditBrowserTests.xcconfig"; sourceTree = "<group>"; };
 		5D32DE1D973E4DB3B00124E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -105,6 +125,7 @@
 		244296D2193DA18000207CAF = {
 			isa = PBXGroup;
 			children = (
+				244D5A681941FF6D00DD151E /* External */,
 				24429717193DA20E00207CAF /* Source */,
 				2442970D193DA20E00207CAF /* Resources */,
 				244296DD193DA18000207CAF /* Frameworks */,
@@ -139,6 +160,7 @@
 		2442970D193DA20E00207CAF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				244D5A651941783A00DD151E /* Json */,
 				24429724193DA22A00207CAF /* Images */,
 				2442970F193DA20E00207CAF /* Plists */,
 				24429712193DA20E00207CAF /* Strings */,
@@ -168,7 +190,8 @@
 		24429717193DA20E00207CAF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				24C42C79193DC8AF0082BD27 /* Subreddit */,
+				244D5A4B19416DF400DD151E /* UI */,
+				244D5A4719416DF400DD151E /* Services */,
 				24429718193DA20E00207CAF /* Startup */,
 			);
 			path = Source;
@@ -194,23 +217,81 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		24C42C79193DC8AF0082BD27 /* Subreddit */ = {
+		244D5A4719416DF400DD151E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				24DA44B4193E924600EFE6BC /* RBSubredditModel.h */,
-				24DA44B5193E924600EFE6BC /* RBSubredditModel.m */,
-				24DA44BC193E952400EFE6BC /* RBSubredditModelTests.m */,
-				24DA44B7193E939000EFE6BC /* RBSubredditRouter.h */,
-				24DA44B8193E939000EFE6BC /* RBSubredditRouter.m */,
-				24DA44BA193E950B00EFE6BC /* RBSubredditRouterTests.m */,
-				24DA44B1193E91BC00EFE6BC /* RBSubredditTableViewCell.h */,
-				24DA44B2193E91BC00EFE6BC /* RBSubredditTableViewCell.m */,
-				24DA44AE193E906800EFE6BC /* RBSubredditView.h */,
-				24DA44AF193E906800EFE6BC /* RBSubredditView.m */,
-				24C42C7A193DC91F0082BD27 /* RBSubredditViewController.h */,
-				24C42C7B193DC91F0082BD27 /* RBSubredditViewController.m */,
+				244D5A4819416DF400DD151E /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		244D5A4819416DF400DD151E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A4919416DF400DD151E /* RBNetworkService.h */,
+				244D5A4A19416DF400DD151E /* RBNetworkService.m */,
+				244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */,
+				240ED4091942EC0900A8E300 /* RBURLValidator.h */,
+				240ED40A1942EC0900A8E300 /* RBURLValidator.m */,
+				240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		244D5A4B19416DF400DD151E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A4C19416DF400DD151E /* Subreddit */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		244D5A4C19416DF400DD151E /* Subreddit */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A4D19416DF400DD151E /* RBSubredditModel.h */,
+				244D5A4E19416DF400DD151E /* RBSubredditModel.m */,
+				244D5A4F19416DF400DD151E /* RBSubredditModelTests.m */,
+				244D5A5019416DF400DD151E /* RBSubredditRouter.h */,
+				244D5A5119416DF400DD151E /* RBSubredditRouter.m */,
+				244D5A5219416DF400DD151E /* RBSubredditRouterTests.m */,
+				244D5A5319416DF400DD151E /* RBSubredditTableViewCell.h */,
+				244D5A5419416DF400DD151E /* RBSubredditTableViewCell.m */,
+				244D5A5519416DF400DD151E /* RBSubredditView.h */,
+				244D5A5619416DF400DD151E /* RBSubredditView.m */,
+				244D5A5719416DF400DD151E /* RBSubredditViewController.h */,
+				244D5A5819416DF400DD151E /* RBSubredditViewController.m */,
 			);
 			path = Subreddit;
+			sourceTree = "<group>";
+		};
+		244D5A651941783A00DD151E /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A661941786B00DD151E /* TestFeed.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		244D5A681941FF6D00DD151E /* External */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A691941FF6D00DD151E /* ASYTesting */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		244D5A691941FF6D00DD151E /* ASYTesting */ = {
+			isa = PBXGroup;
+			children = (
+				244D5A6A1941FF6D00DD151E /* ASYMacros.h */,
+				244D5A6B1941FF6D00DD151E /* ASYMacros.m */,
+				244D5A6C1941FF6D00DD151E /* ASYTesting-Prefix.pch */,
+				244D5A6D1941FF6D00DD151E /* ASYTesting.h */,
+				244D5A6E1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.h */,
+				244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */,
+			);
+			path = ASYTesting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24429720193DA20E00207CAF /* InfoPlist.strings in Resources */,
+				244D5A671941786B00DD151E /* TestFeed.json in Resources */,
 				24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */,
 				24429726193DA22A00207CAF /* Images.xcassets in Resources */,
 				24429721193DA20E00207CAF /* RedditBrowserTests-InfoPlist.strings in Resources */,
@@ -377,13 +459,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24DA44B9193E939000EFE6BC /* RBSubredditRouter.m in Sources */,
+				244D5A5A19416DF400DD151E /* RBSubredditModel.m in Sources */,
+				240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */,
+				244D5A5919416DF400DD151E /* RBNetworkService.m in Sources */,
+				244D5A5E19416DF400DD151E /* RBSubredditTableViewCell.m in Sources */,
 				24429723193DA20E00207CAF /* main.m in Sources */,
-				24DA44B0193E906800EFE6BC /* RBSubredditView.m in Sources */,
-				24DA44B3193E91BC00EFE6BC /* RBSubredditTableViewCell.m in Sources */,
+				244D5A5F19416DF400DD151E /* RBSubredditView.m in Sources */,
+				244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */,
+				244D5A6019416DF400DD151E /* RBSubredditViewController.m in Sources */,
 				24429722193DA20E00207CAF /* RBAppDelegate.m in Sources */,
-				24DA44B6193E924600EFE6BC /* RBSubredditModel.m in Sources */,
-				24C42C7C193DC91F0082BD27 /* RBSubredditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,8 +475,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24DA44BD193E952400EFE6BC /* RBSubredditModelTests.m in Sources */,
-				24DA44BB193E950B00EFE6BC /* RBSubredditRouterTests.m in Sources */,
+				244D5A6119416DFD00DD151E /* RBSubredditModelTests.m in Sources */,
+				244D5A731941FF7700DD151E /* ASYMacros.m in Sources */,
+				244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */,
+				244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */,
+				240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */,
+				244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
