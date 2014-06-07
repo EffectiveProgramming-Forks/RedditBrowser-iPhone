@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40A1942EC0900A8E300 /* RBURLValidator.m */; };
 		240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */; };
+		240ED41A1942FC9E00A8E300 /* RBRedditFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */; };
+		240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */; };
 		244296DF193DA18000207CAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296DE193DA18000207CAF /* Foundation.framework */; };
 		244296E1193DA18000207CAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E0193DA18000207CAF /* CoreGraphics.framework */; };
 		244296E3193DA18000207CAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E2193DA18000207CAF /* UIKit.framework */; };
@@ -51,6 +53,10 @@
 		240ED4091942EC0900A8E300 /* RBURLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURLValidator.h; sourceTree = "<group>"; };
 		240ED40A1942EC0900A8E300 /* RBURLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidator.m; sourceTree = "<group>"; };
 		240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidatorTests.m; sourceTree = "<group>"; };
+		240ED4131942F84800A8E300 /* RBNetworkBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBNetworkBlocks.h; sourceTree = "<group>"; };
+		240ED4181942FC9E00A8E300 /* RBRedditFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRedditFeedManager.h; sourceTree = "<group>"; };
+		240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManager.m; sourceTree = "<group>"; };
+		240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManagerTests.m; sourceTree = "<group>"; };
 		244296DB193DA18000207CAF /* RedditBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		244296DE193DA18000207CAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		244296E0193DA18000207CAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +128,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240ED4171942FBD000A8E300 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				240ED4181942FC9E00A8E300 /* RBRedditFeedManager.h */,
+				240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */,
+				240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		244296D2193DA18000207CAF = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +206,7 @@
 		24429717193DA20E00207CAF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				240ED4171942FBD000A8E300 /* Managers */,
 				244D5A4B19416DF400DD151E /* UI */,
 				244D5A4719416DF400DD151E /* Services */,
 				24429718193DA20E00207CAF /* Startup */,
@@ -228,6 +245,7 @@
 		244D5A4819416DF400DD151E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				240ED4131942F84800A8E300 /* RBNetworkBlocks.h */,
 				244D5A4919416DF400DD151E /* RBNetworkService.h */,
 				244D5A4A19416DF400DD151E /* RBNetworkService.m */,
 				244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */,
@@ -468,6 +486,7 @@
 				244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */,
 				244D5A6019416DF400DD151E /* RBSubredditViewController.m in Sources */,
 				24429722193DA20E00207CAF /* RBAppDelegate.m in Sources */,
+				240ED41A1942FC9E00A8E300 /* RBRedditFeedManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +499,7 @@
 				244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */,
 				244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */,
 				240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */,
+				240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */,
 				244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
