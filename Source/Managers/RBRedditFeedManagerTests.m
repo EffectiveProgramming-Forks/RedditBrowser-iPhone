@@ -1,11 +1,13 @@
 #import <XCTest/XCTest.h>
 #import "RBNetworkService.h"
+#import "RBPersistenceService.h"
 #import "RBRedditFeedManager.h"
 
 @interface RBRedditFeedManagerTests : XCTestCase
 
 @property (nonatomic) RBRedditFeedManager *testObject;
 @property (nonatomic) RBNetworkService *mockNetworkService;
+@property (nonatomic) RBPersistenceService *mockPersistenceService;
 
 @end
 
@@ -14,14 +16,16 @@
 - (void)setUp {
     [super setUp];
     _mockNetworkService = mock([RBNetworkService class]);
-    _testObject = [[RBRedditFeedManager alloc] initWithNetworkService:_mockNetworkService];
+    _mockPersistenceService = mock([RBPersistenceService class]);
+    _testObject = [[RBRedditFeedManager alloc] initWithNetworkService:_mockNetworkService
+                                                   persistenceService:_mockPersistenceService];
 }
 
 - (void)tearDown {
     [super tearDown];
 }
 
-- (void)testThatFetchingAFeedPassesCallToService {
+- (void)testThatFetchingAFeedPassesControlToService {
     NSString *feed = @"/r/ListenToThis";
     NSString *expectedURLAsString = [NSString stringWithFormat:@"http://www.reddit.com%@", feed];
     
@@ -29,6 +33,25 @@
     
     [verifyCount(_mockNetworkService, times(1)) GET:expectedURLAsString
                                     completionBlock:anything()];
+}
+
+- (void)testThatFetchingAFeedSuccessfullyInvokesCompletionBlock {
+    NSString *feed = @"/r/ListenToThis";
+    NSString *urlAsString = [NSString stringWithFormat:@"http://www.reddit.com%@", feed];
+    __block BOOL completionBlockFired = NO;
+    RBRedditFeedManagerCompletionBlock completionBlock = ^(NSArray *items) {
+        completionBlockFired = YES;
+    };
+    
+    [_testObject fetchFeed:feed completionBlock:completionBlock];
+    
+    MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
+    [verifyCount(_mockNetworkService, times(1)) GET:urlAsString
+                                    completionBlock:[argument capture]];
+    void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
+    actualCompletionBlock(@{}, nil);
+    
+    XCTAssertTrue(completionBlockFired);
 }
 
 @end
