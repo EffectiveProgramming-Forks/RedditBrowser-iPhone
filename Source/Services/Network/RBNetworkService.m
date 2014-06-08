@@ -10,6 +10,11 @@
 
 @implementation RBNetworkService
 
++ (instancetype)networkService {
+    RBURLValidator *validator = [[RBURLValidator alloc] init];
+    return [[RBNetworkService alloc] initWithValidator:validator];
+}
+
 - (id)initWithValidator:(RBURLValidator *)validator {
     self = [super init];
     if (self) {

@@ -3,6 +3,9 @@
 #import "RBSubredditRouter.h"
 #import "RBSubredditModel.h"
 #import "RBSubredditView.h"
+#import "RBRedditFeedManager.h"
+#import "RBNetworkService.h"
+#import "RBPersistenceService.h"
 
 @interface RBSubredditViewController ()
 
@@ -18,7 +21,11 @@
     [super loadView];
     [self setupNavigationBar];
     
-    _subredditModel = [[RBSubredditModel alloc] init];
+    RBPersistenceService *persistenceService = [RBPersistenceService persistenceService];
+    RBNetworkService *networkService = [RBNetworkService networkService];
+    RBRedditFeedManager *feedManager = [[RBRedditFeedManager alloc] initWithNetworkService:networkService
+                                                                        persistenceService:persistenceService];
+    _subredditModel = [[RBSubredditModel alloc] initWithSubredditFeedManager:feedManager];
     _subredditView = [[RBSubredditView alloc] initWithFrame:self.view.bounds];
     _subredditRouter = [[RBSubredditRouter alloc] initWithModel:_subredditModel view:_subredditView];
     

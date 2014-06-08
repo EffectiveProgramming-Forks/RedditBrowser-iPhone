@@ -2,7 +2,7 @@
 #import "RBNetworkService.h"
 #import "RBPersistenceService.h"
 #import "RBRedditFeedManager.h"
-#import "RBSubredditItem.h"
+#import "RBRedditItem.h"
 
 @interface RBRedditFeedManagerTests : XCTestCase
 
@@ -27,17 +27,19 @@
 }
 
 - (void)testThatFetchingAFeedPassesControlToService {
-    NSString *feed = @"/r/ListenToThis";
+    NSString *feedName = @"ListenToThis";
+    NSString *feed = [NSString stringWithFormat:@"/r/%@.json", feedName];
     NSString *expectedURLAsString = [NSString stringWithFormat:@"http://www.reddit.com%@", feed];
     
-    [_testObject fetchFeed:feed completionBlock:nil];
+    [_testObject fetchFeed:feedName completionBlock:nil];
     
     [verifyCount(_mockNetworkService, times(1)) GET:expectedURLAsString
                                     completionBlock:anything()];
 }
 
 - (void)testThatFetchingAFeedSuccessfullyInvokesCompletionBlock {
-    NSString *feed = @"/r/ListenToThis";
+    NSString *feedName = @"ListenToThis";
+    NSString *feed = [NSString stringWithFormat:@"/r/%@.json", feedName];
     NSString *urlAsString = [NSString stringWithFormat:@"http://www.reddit.com%@", feed];
     
     __block BOOL completionBlockFired = NO;
@@ -45,7 +47,7 @@
         completionBlockFired = YES;
     };
     
-    [_testObject fetchFeed:feed completionBlock:completionBlock];
+    [_testObject fetchFeed:feedName completionBlock:completionBlock];
     
     MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
     [verifyCount(_mockNetworkService, times(1)) GET:urlAsString
@@ -60,9 +62,9 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ListenToThis" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *jsonFeedAsDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    NSArray *expectedItems = [RBSubredditItem itemsForJSONFeed:jsonFeedAsDictionary];
+    NSArray *expectedItems = [RBRedditItem itemsForJSONFeed:jsonFeedAsDictionary];
     NSInteger expectedCount = [expectedItems count];
-    __block RBSubredditItem *item = expectedItems[0];
+    __block RBRedditItem *item = expectedItems[0];
     NSString *expectedFirstTitle = item.title;
     item = expectedItems[1];
     NSString *expectedSecondTitle = item.title;

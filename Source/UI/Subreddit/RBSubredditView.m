@@ -1,9 +1,12 @@
 #import "RBSubredditView.h"
 #import "RBSubredditTableViewCell.h"
+#import "RBRedditItem.h"
 
 @interface RBSubredditView () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic) NSArray *subRedditItems;
+@property (nonatomic) NSString *feedName;
 
 @end
 
@@ -27,6 +30,14 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
     return self;
 }
 
+#pragma mark - API
+
+- (void)setItems:(NSArray *)items forFeedName:(NSString *)feedName {
+    _feedName = feedName;
+    _subRedditItems = items;
+    [_tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource/UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -38,7 +49,7 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return [_subRedditItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,7 +57,8 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.textLabel.text = @"A Rockstar Band";
+    RBRedditItem *item = _subRedditItems[indexPath.row];
+    cell.textLabel.text = item.title;
     cell.detailTextLabel.text = @"It's all about the little things";
 }
 

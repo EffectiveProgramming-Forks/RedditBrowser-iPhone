@@ -1,11 +1,11 @@
 #import <XCTest/XCTest.h>
-#import "RBSubredditItem.h"
+#import "RBRedditItem.h"
 
-@interface RBSubredditItemTests : XCTestCase
+@interface RBRedditItemTests : XCTestCase
 
 @end
 
-@implementation RBSubredditItemTests
+@implementation RBRedditItemTests
 
 - (void)setUp {
     [super setUp];
@@ -20,12 +20,12 @@
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *jsonFeedAsDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 
-    NSArray *items = [RBSubredditItem itemsForJSONFeed:jsonFeedAsDictionary];
+    NSArray *items = [RBRedditItem itemsForJSONFeed:jsonFeedAsDictionary];
     
     NSInteger expectedItemCount = 25;
     XCTAssertEqual([items count], expectedItemCount);
     
-    RBSubredditItem *item = items[0];
+    RBRedditItem *item = items[0];
     XCTAssertEqualObjects(item.title, @"Charanjit Singh - Raga Bhupali [Synthesized Indian Classical Acid House] (1982)");
 
     item = items[1];

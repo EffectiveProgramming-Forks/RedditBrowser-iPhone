@@ -2,4 +2,6 @@
 
 @interface RBPersistenceService : NSObject
 
++ (instancetype)persistenceService;
+
 @end

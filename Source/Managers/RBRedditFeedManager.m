@@ -1,7 +1,7 @@
 #import "RBRedditFeedManager.h"
 #import "RBPersistenceService.h"
 #import "RBNetworkService.h"
-#import "RBSubreddititem.h"
+#import "RBReddititem.h"
 
 @interface RBRedditFeedManager ()
 
@@ -31,10 +31,11 @@ static NSString *kHardCodedHostName = @"www.reddit.com";
 
     // else
     // fetch from network
+    feedName = [NSString stringWithFormat:@"/r/%@.json", feedName];
     NSString *urlAsString = [NSString stringWithFormat:@"%@%@%@", scheme, kHardCodedHostName, feedName];
     [_networkService GET:urlAsString completionBlock:^(NSDictionary *response, NSError *error) {
         if (response && !error) {
-            NSArray *items = [RBSubredditItem itemsForJSONFeed:response];
+            NSArray *items = [RBRedditItem itemsForJSONFeed:response];
             completionBlock(items);
             // save to data service
             // start cache timer

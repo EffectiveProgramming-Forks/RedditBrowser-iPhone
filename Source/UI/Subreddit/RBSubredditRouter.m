@@ -4,20 +4,35 @@
 
 @interface RBSubredditRouter () <RBSubredditModelDelegate,RBSubredditViewDelegate>
 
-@property (nonatomic, weak) RBSubredditModel *subredditModel;
-@property (nonatomic, weak) id<RBSubredditView> subredditView;
+@property (nonatomic, weak) RBSubredditModel *subRedditModel;
+@property (nonatomic, weak) id<RBSubredditView> subRedditView;
 
 @end
 
 @implementation RBSubredditRouter
 
-- (id)initWithModel:(RBSubredditModel *)model view:(id<RBSubredditView>)view {
+static NSString *kDefaltFeedName = @"ListenToThis";
+
+- (id)initWithModel:(RBSubredditModel *)subRedditModel view:(id<RBSubredditView>)subRedditView {
     self = [super init];
     if (self) {
-        model.delegateForModel = self;
-        view.delegateForView = self;
+        subRedditModel.delegateForModel = self;
+        subRedditView.delegateForView = self;
+        
+        _subRedditView = subRedditView;
+        _subRedditModel = subRedditModel;
+        
+        [subRedditModel fetchSubredditFeed:kDefaltFeedName];
     }
     return self;
 }
+
+#pragma mark - RBSubredditModelDelegate
+
+- (void)receivedSubredditItems:(NSArray *)items forFeedName:(NSString *)feedName {
+    [_subRedditView setItems:items forFeedName:feedName];
+}
+
+#pragma mark - RBSubredditViewDelegate
 
 @end

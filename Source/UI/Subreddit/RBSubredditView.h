@@ -8,6 +8,8 @@
 
 @property (nonatomic, weak) id<RBSubredditViewDelegate> delegateForView;
 
+- (void)setItems:(NSArray *)items forFeedName:(NSString *)feedName;
+
 @end
 
 @interface RBSubredditView : UIView<RBSubredditView>

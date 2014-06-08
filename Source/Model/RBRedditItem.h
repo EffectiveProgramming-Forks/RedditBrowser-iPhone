@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface RBSubredditItem : NSObject
+@interface RBRedditItem : NSObject
 
 @property (nonatomic) NSString *subreddit;
 @property (nonatomic) NSString *title;

@@ -6,6 +6,8 @@ typedef void (^RBJSONCompletionBlock)(id response, NSError *error);
 
 @interface RBNetworkService : NSObject
 
++ (instancetype)networkService;
+
 - (id)initWithValidator:(RBURLValidator *)validator;
 - (void)GET:(NSString *)urlAsString completionBlock:(RBJSONCompletionBlock)completionBlock;
 

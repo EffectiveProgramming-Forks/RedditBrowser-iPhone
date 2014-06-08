@@ -3,6 +3,12 @@
 #import "RBNetworkService.h"
 #import <OHHTTPStubs/OHHTTPStubs.h>
 
+/**
+ * Possible outcomes
+ * - html content
+ * - 40*, 50*
+ * - 200
+ */
 @interface RBNetworkServiceTests : XCTestCase
 
 @property (nonatomic) RBNetworkService *testObject;
@@ -17,7 +23,7 @@
 static NSInteger kHTTPCODE_SUCCESS = 200;
 static NSInteger kHTTPCODE_NOT_AUTHORIZED = 401;
 static NSInteger kHTTPCODE_SERVER_ERROR = 500;
-static NSInteger kTimeOut = 1.0;
+static NSInteger kAsyncSignalTimeOut = 1.0;
 
 - (void)setUp {
     [super setUp];
@@ -39,7 +45,7 @@ static NSInteger kTimeOut = 1.0;
         [self asySignal:_signal];
     }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertFalse(signaled);
 }
 
@@ -60,7 +66,7 @@ static NSInteger kTimeOut = 1.0;
         }
     }];
 
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 
@@ -75,7 +81,7 @@ static NSInteger kTimeOut = 1.0;
     
     [_testObject GET:@"http://www.yahoo.com/" completionBlock:nil];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertFalse(signaled);
 }
 
@@ -96,7 +102,7 @@ static NSInteger kTimeOut = 1.0;
         }
     }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 
@@ -115,7 +121,7 @@ static NSInteger kTimeOut = 1.0;
         }
     }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 
@@ -130,7 +136,7 @@ static NSInteger kTimeOut = 1.0;
     
     [_testObject GET:@"http://www.yahoo.com/" completionBlock:nil];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertFalse(signaled);
 }
 
@@ -159,16 +165,16 @@ static NSInteger kTimeOut = 1.0;
          }
      }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 
 - (void)testThatCorrectPathIsUsed {
     __block NSString *actualURL = nil;
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        actualURL = [request.URL absoluteString];
         return YES;
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        actualURL = [request.URL absoluteString];
         return [OHHTTPStubsResponse responseWithData:_jsonData
                                           statusCode:kHTTPCODE_SUCCESS
                                              headers:_jsonHeaders];
@@ -186,7 +192,7 @@ static NSInteger kTimeOut = 1.0;
          }
      }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 
@@ -218,7 +224,7 @@ static NSInteger kTimeOut = 1.0;
          }
      }];
     
-    BOOL signaled = [self asyWaitForSignal:_signal timeout:kTimeOut];
+    BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
     ASYAssertTrue(signaled);
 }
 

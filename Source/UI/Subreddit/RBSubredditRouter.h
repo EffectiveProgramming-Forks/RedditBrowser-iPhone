@@ -5,6 +5,6 @@
 
 @interface RBSubredditRouter : NSObject
 
-- (id)initWithModel:(RBSubredditModel *)model view:(id<RBSubredditView>)view;
+- (id)initWithModel:(RBSubredditModel *)model view:(id<RBSubredditView>)subRedditView;
 
 @end

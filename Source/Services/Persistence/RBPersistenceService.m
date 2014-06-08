@@ -2,4 +2,8 @@
 
 @implementation RBPersistenceService
 
++ (instancetype)persistenceService {
+    return [[RBPersistenceService alloc] init];
+}
+
 @end

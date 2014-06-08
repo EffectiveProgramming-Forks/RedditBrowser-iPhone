@@ -17,6 +17,8 @@
 
 @implementation RBSubredditRouterTests
 
+static NSString *kFeedName = @"ListenToThis";
+
 - (void)setUp {
     [super setUp];
     _mockView = mockProtocol(@protocol(RBSubredditView));
@@ -38,6 +40,21 @@
 
 - (void)testRouterRegistersForModelEvents {
     [verifyCount(_mockModel, times(1)) setDelegateForModel:_testObject];
+}
+
+- (void)testRouterRequestsFeedsFromModel {
+    [verifyCount(_mockModel, times(1)) fetchSubredditFeed:kFeedName];
+}
+
+- (void)testRouterUpdatesViewUponReceivingData {
+    NSArray *items = @[@"a", @"b", @"c"];
+    [_testObject receivedSubredditItems:items forFeedName:kFeedName];
+    
+    [verifyCount(_mockView, times(1)) setItems:items forFeedName:kFeedName];
+}
+
+- (void)testThatRouterIsHardcodedToRetrieveListenToThis {
+    [verifyCount(_mockModel, times(1)) fetchSubredditFeed:kFeedName];
 }
 
 @end
