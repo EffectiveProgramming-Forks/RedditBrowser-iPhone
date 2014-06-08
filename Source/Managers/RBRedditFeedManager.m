@@ -6,7 +6,7 @@
 @interface RBRedditFeedManager ()
 
 @property (nonatomic) RBNetworkService *networkService;
-@property (nonatomic) RBPersistenceService *dataService;
+@property (nonatomic) RBPersistenceService *persistenceService;
 
 @end
 
@@ -16,11 +16,11 @@ static NSString *scheme = @"http://";
 static NSString *kHardCodedHostName = @"www.reddit.com";
 
 - (id)initWithNetworkService:(RBNetworkService *)networkService
-          persistenceService:(RBPersistenceService *)dataService {
+          persistenceService:(RBPersistenceService *)persistenceService {
     self = [super init];
     if (self) {
         _networkService = networkService;
-        _dataService = dataService;
+        _persistenceService = persistenceService;
     }
     return self;
 }

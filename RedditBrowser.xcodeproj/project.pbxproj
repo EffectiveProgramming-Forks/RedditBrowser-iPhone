@@ -57,7 +57,6 @@
 		240ED4091942EC0900A8E300 /* RBURLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURLValidator.h; sourceTree = "<group>"; };
 		240ED40A1942EC0900A8E300 /* RBURLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidator.m; sourceTree = "<group>"; };
 		240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidatorTests.m; sourceTree = "<group>"; };
-		240ED4131942F84800A8E300 /* RBNetworkBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBNetworkBlocks.h; sourceTree = "<group>"; };
 		240ED4181942FC9E00A8E300 /* RBRedditFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRedditFeedManager.h; sourceTree = "<group>"; };
 		240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManager.m; sourceTree = "<group>"; };
 		240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManagerTests.m; sourceTree = "<group>"; };
@@ -277,7 +276,6 @@
 		244D5A4819416DF400DD151E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				240ED4131942F84800A8E300 /* RBNetworkBlocks.h */,
 				244D5A4919416DF400DD151E /* RBNetworkService.h */,
 				244D5A4A19416DF400DD151E /* RBNetworkService.m */,
 				244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */,

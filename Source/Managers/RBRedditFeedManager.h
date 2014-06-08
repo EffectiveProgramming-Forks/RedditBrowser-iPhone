@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
+typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
+
 @class RBNetworkService;
 @class RBPersistenceService;
-
-typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
 
 @protocol RBRedditFeedManagerDelegate <NSObject>
 
@@ -12,8 +12,9 @@ typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
 @end
 
 /**
- * Business logic for fetching feeds.
- * Logic for caching between database and network is here.
+ * Business logic for fetching feeds includes:
+ * - logic for fetching from network
+ * - logic for fetching and caching to local database
  */
 @interface RBRedditFeedManager : NSObject
 

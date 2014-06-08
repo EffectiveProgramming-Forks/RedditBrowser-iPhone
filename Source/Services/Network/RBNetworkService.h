@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
-#import "RBNetworkBlocks.h"
+
+typedef void (^RBJSONCompletionBlock)(id response, NSError *error);
 
 @class RBURLValidator;
 

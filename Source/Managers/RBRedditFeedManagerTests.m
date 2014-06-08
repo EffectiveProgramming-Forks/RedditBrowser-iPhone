@@ -56,7 +56,7 @@
     XCTAssertTrue(completionBlockFired);
 }
 
-- (void)testThatFetchingAFeedUsesTheModelToCreateSubredditItems {
+- (void)testThatFetchingAFeedCreatesCorrectSubredditItems {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ListenToThis" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *jsonFeedAsDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
