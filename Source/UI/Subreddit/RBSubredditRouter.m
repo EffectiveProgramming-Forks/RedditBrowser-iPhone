@@ -1,6 +1,7 @@
 #import "RBSubredditRouter.h"
 #import "RBSubredditModel.h"
 #import "RBSubredditView.h"
+#import "RBRedditItem.h"
 
 @interface RBSubredditRouter () <RBSubredditModelDelegate,RBSubredditViewDelegate>
 
@@ -11,7 +12,11 @@
 
 @implementation RBSubredditRouter
 
+// Eventually comes from user selection!
 static NSString *kDefaltFeedName = @"ListenToThis";
+
+// Get rid of this!
+static NSString *kHostname = @"http://www.reddit.com/";
 
 - (id)initWithModel:(RBSubredditModel *)subRedditModel view:(id<RBSubredditView>)subRedditView {
     self = [super init];
@@ -34,5 +39,11 @@ static NSString *kDefaltFeedName = @"ListenToThis";
 }
 
 #pragma mark - RBSubredditViewDelegate
+
+- (void)itemWasSelected:(RBRedditItem *)item {
+    NSString *permalink = item.permalink;
+    NSString *urlAsString = [NSString stringWithFormat:@"%@%@", kHostname, permalink];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlAsString]];
+}
 
 @end

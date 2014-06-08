@@ -5,7 +5,7 @@
 @interface RBSubredditView () <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
-@property (nonatomic) NSArray *subRedditItems;
+@property (nonatomic) NSArray *redditItems;
 @property (nonatomic) NSString *feedName;
 
 @end
@@ -34,7 +34,7 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 
 - (void)setItems:(NSArray *)items forFeedName:(NSString *)feedName {
     _feedName = feedName;
-    _subRedditItems = items;
+    _redditItems = items;
     [_tableView reloadData];
 }
 
@@ -49,7 +49,7 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_subRedditItems count];
+    return [_redditItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,12 +57,14 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    RBRedditItem *item = _subRedditItems[indexPath.row];
+    RBRedditItem *item = _redditItems[indexPath.row];
     cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = @"It's all about the little things";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", item.author];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    RBRedditItem *item = _redditItems[indexPath.row];
+    [self.delegateForView itemWasSelected:item];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -4,7 +4,8 @@
 
 @property (nonatomic) NSString *subreddit;
 @property (nonatomic) NSString *title;
-@property (nonatomic) NSString *URIAsString;
+@property (nonatomic) NSString *permalink;
+@property (nonatomic) NSString *author;
 
 + (NSArray *)itemsForJSONFeed:(NSDictionary *)jsonDictionary;
 

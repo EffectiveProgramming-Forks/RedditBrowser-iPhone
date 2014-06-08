@@ -1,6 +1,10 @@
 #import <UIKit/UIKit.h>
 
+@class RBRedditItem;
+
 @protocol RBSubredditViewDelegate <NSObject>
+
+- (void)itemWasSelected:(RBRedditItem *)item;
 
 @end
 

@@ -9,8 +9,10 @@
     for (NSDictionary *child in children) {
         RBRedditItem *item = [[RBRedditItem alloc] init];
         NSDictionary *childData = child[@"data"];
-        NSString *title = childData[@"title"];
-        item.title = title;
+        item.title = childData[@"title"];
+        item.permalink = childData[@"permalink"];
+        item.author = childData[@"author"];
+        item.subreddit = childData[@"subreddit"];
         [items addObject:item];
     }
     return [NSArray arrayWithArray:items];
