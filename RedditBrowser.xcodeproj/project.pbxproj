@@ -13,6 +13,9 @@
 		240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */; };
 		240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED420194400B000A8E300 /* RBPersistenceService.m */; };
 		240ED423194400C300A8E300 /* RBDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED422194400C300A8E300 /* RBDataServiceTests.m */; };
+		240ED4251944155300A8E300 /* ListenToThis.json in Resources */ = {isa = PBXBuildFile; fileRef = 240ED4241944155300A8E300 /* ListenToThis.json */; };
+		240ED4291944163500A8E300 /* RBSubredditItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4281944163500A8E300 /* RBSubredditItem.m */; };
+		240ED42B19441A2700A8E300 /* RBSubredditItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED42A19441A2700A8E300 /* RBSubredditItemTests.m */; };
 		244296DF193DA18000207CAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296DE193DA18000207CAF /* Foundation.framework */; };
 		244296E1193DA18000207CAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E0193DA18000207CAF /* CoreGraphics.framework */; };
 		244296E3193DA18000207CAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244296E2193DA18000207CAF /* UIKit.framework */; };
@@ -33,7 +36,6 @@
 		244D5A6119416DFD00DD151E /* RBSubredditModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A4F19416DF400DD151E /* RBSubredditModelTests.m */; };
 		244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A5219416DF400DD151E /* RBSubredditRouterTests.m */; };
 		244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */; };
-		244D5A671941786B00DD151E /* TestFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 244D5A661941786B00DD151E /* TestFeed.json */; };
 		244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */; };
 		244D5A731941FF7700DD151E /* ASYMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6B1941FF6D00DD151E /* ASYMacros.m */; };
 		24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C42C7D193DC9C30082BD27 /* Localizable.strings */; };
@@ -62,6 +64,10 @@
 		240ED41F194400B000A8E300 /* RBPersistenceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBPersistenceService.h; sourceTree = "<group>"; };
 		240ED420194400B000A8E300 /* RBPersistenceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceService.m; sourceTree = "<group>"; };
 		240ED422194400C300A8E300 /* RBDataServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBDataServiceTests.m; sourceTree = "<group>"; };
+		240ED4241944155300A8E300 /* ListenToThis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListenToThis.json; sourceTree = "<group>"; };
+		240ED4271944163500A8E300 /* RBSubredditItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditItem.h; sourceTree = "<group>"; };
+		240ED4281944163500A8E300 /* RBSubredditItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditItem.m; sourceTree = "<group>"; };
+		240ED42A19441A2700A8E300 /* RBSubredditItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditItemTests.m; sourceTree = "<group>"; };
 		244296DB193DA18000207CAF /* RedditBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		244296DE193DA18000207CAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		244296E0193DA18000207CAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,7 +98,6 @@
 		244D5A5719416DF400DD151E /* RBSubredditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditViewController.h; sourceTree = "<group>"; };
 		244D5A5819416DF400DD151E /* RBSubredditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditViewController.m; sourceTree = "<group>"; };
 		244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBNetworkServiceTests.m; sourceTree = "<group>"; };
-		244D5A661941786B00DD151E /* TestFeed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestFeed.json; sourceTree = "<group>"; };
 		244D5A6A1941FF6D00DD151E /* ASYMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASYMacros.h; sourceTree = "<group>"; };
 		244D5A6B1941FF6D00DD151E /* ASYMacros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASYMacros.m; sourceTree = "<group>"; };
 		244D5A6C1941FF6D00DD151E /* ASYTesting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASYTesting-Prefix.pch"; sourceTree = "<group>"; };
@@ -151,6 +156,16 @@
 				240ED422194400C300A8E300 /* RBDataServiceTests.m */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		240ED4261944161200A8E300 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				240ED4271944163500A8E300 /* RBSubredditItem.h */,
+				240ED4281944163500A8E300 /* RBSubredditItem.m */,
+				240ED42A19441A2700A8E300 /* RBSubredditItemTests.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		244296D2193DA18000207CAF = {
@@ -221,6 +236,7 @@
 		24429717193DA20E00207CAF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				240ED4261944161200A8E300 /* Model */,
 				240ED4171942FBD000A8E300 /* Managers */,
 				244D5A4B19416DF400DD151E /* UI */,
 				244D5A4719416DF400DD151E /* Services */,
@@ -302,7 +318,7 @@
 		244D5A651941783A00DD151E /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				244D5A661941786B00DD151E /* TestFeed.json */,
+				240ED4241944155300A8E300 /* ListenToThis.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -409,8 +425,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				24429720193DA20E00207CAF /* InfoPlist.strings in Resources */,
-				244D5A671941786B00DD151E /* TestFeed.json in Resources */,
 				24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */,
+				240ED4251944155300A8E300 /* ListenToThis.json in Resources */,
 				24429726193DA22A00207CAF /* Images.xcassets in Resources */,
 				24429721193DA20E00207CAF /* RedditBrowserTests-InfoPlist.strings in Resources */,
 			);
@@ -498,6 +514,7 @@
 				244D5A5919416DF400DD151E /* RBNetworkService.m in Sources */,
 				240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */,
 				244D5A5E19416DF400DD151E /* RBSubredditTableViewCell.m in Sources */,
+				240ED4291944163500A8E300 /* RBSubredditItem.m in Sources */,
 				24429723193DA20E00207CAF /* main.m in Sources */,
 				244D5A5F19416DF400DD151E /* RBSubredditView.m in Sources */,
 				244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */,
@@ -513,6 +530,7 @@
 			files = (
 				244D5A6119416DFD00DD151E /* RBSubredditModelTests.m in Sources */,
 				240ED423194400C300A8E300 /* RBDataServiceTests.m in Sources */,
+				240ED42B19441A2700A8E300 /* RBSubredditItemTests.m in Sources */,
 				244D5A731941FF7700DD151E /* ASYMacros.m in Sources */,
 				244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */,
 				244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */,
