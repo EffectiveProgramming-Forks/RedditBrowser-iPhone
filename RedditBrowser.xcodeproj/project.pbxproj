@@ -38,6 +38,8 @@
 		244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */; };
 		244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */; };
 		244D5A731941FF7700DD151E /* ASYMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6B1941FF6D00DD151E /* ASYMacros.m */; };
+		24A50FB3194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24A50FB1194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld */; };
+		24BD45CE1945637700665551 /* RedditItemEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BD45CD1945637700665551 /* RedditItemEntity.m */; };
 		24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C42C7D193DC9C30082BD27 /* Localizable.strings */; };
 		48781F28E5D24BFB9D7A1311 /* libPods-RedditBrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E8E49EA977433B9132FDD5 /* libPods-RedditBrowserTests.a */; };
 		6E3416FEE40B4455B09BB618 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D34C235B040C5B09B2F34 /* libPods.a */; };
@@ -103,6 +105,11 @@
 		244D5A6D1941FF6D00DD151E /* ASYTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASYTesting.h; sourceTree = "<group>"; };
 		244D5A6E1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ASYAsynchronousTesting.h"; sourceTree = "<group>"; };
 		244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+ASYAsynchronousTesting.m"; sourceTree = "<group>"; };
+		24A50FB2194562CD00F148EE /* RedditBrowserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RedditBrowserDataModel.xcdatamodel; sourceTree = "<group>"; };
+		24A50FB4194562DA00F148EE /* RedditBrowserDataModel-01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RedditBrowserDataModel-01.xcdatamodel"; sourceTree = "<group>"; };
+		24BD45CC1945637700665551 /* RedditItemEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditItemEntity.h; sourceTree = "<group>"; };
+		24BD45CD1945637700665551 /* RedditItemEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItemEntity.m; sourceTree = "<group>"; };
+		24BD45CF1945639100665551 /* RBReditBrowserEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBReditBrowserEntities.h; sourceTree = "<group>"; };
 		24C42C7E193DC9C30082BD27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24DA44BE193E967D00EFE6BC /* RedditBrowserTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedditBrowserTests-Prefix.pch"; sourceTree = "<group>"; };
 		32DAB1ADBDE54143940025E4 /* Pods-RedditBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditBrowserTests.xcconfig"; path = "Pods/Pods-RedditBrowserTests.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +157,7 @@
 		240ED41E1944007E00A8E300 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				24A50FAF1945629800F148EE /* Entities */,
 				240ED41F194400B000A8E300 /* RBPersistenceService.h */,
 				240ED420194400B000A8E300 /* RBPersistenceService.m */,
 				240ED422194400C300A8E300 /* RBDataServiceTests.m */,
@@ -205,6 +213,7 @@
 		2442970D193DA20E00207CAF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24A50FB0194562AA00F148EE /* Database */,
 				244D5A651941783A00DD151E /* JSON */,
 				24429724193DA22A00207CAF /* Images */,
 				2442970F193DA20E00207CAF /* Plists */,
@@ -340,6 +349,24 @@
 				244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */,
 			);
 			path = ASYTesting;
+			sourceTree = "<group>";
+		};
+		24A50FAF1945629800F148EE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				24BD45CC1945637700665551 /* RedditItemEntity.h */,
+				24BD45CD1945637700665551 /* RedditItemEntity.m */,
+				24BD45CF1945639100665551 /* RBReditBrowserEntities.h */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		24A50FB0194562AA00F148EE /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				24A50FB1194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,6 +542,8 @@
 				240ED4291944163500A8E300 /* RBRedditItem.m in Sources */,
 				24429723193DA20E00207CAF /* main.m in Sources */,
 				244D5A5F19416DF400DD151E /* RBSubredditView.m in Sources */,
+				24A50FB3194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld in Sources */,
+				24BD45CE1945637700665551 /* RedditItemEntity.m in Sources */,
 				244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */,
 				244D5A6019416DF400DD151E /* RBSubredditViewController.m in Sources */,
 				24429722193DA20E00207CAF /* RBAppDelegate.m in Sources */,
@@ -747,6 +776,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		24A50FB1194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				24A50FB4194562DA00F148EE /* RedditBrowserDataModel-01.xcdatamodel */,
+				24A50FB2194562CD00F148EE /* RedditBrowserDataModel.xcdatamodel */,
+			);
+			currentVersion = 24A50FB4194562DA00F148EE /* RedditBrowserDataModel-01.xcdatamodel */;
+			path = RedditBrowserDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 244296D3193DA18000207CAF /* Project object */;
 }

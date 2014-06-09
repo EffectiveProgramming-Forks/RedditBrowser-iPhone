@@ -18,6 +18,8 @@ typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
  */
 @interface RBRedditFeedManager : NSObject
 
+@property (nonatomic) id<RBRedditFeedManagerDelegate> delegateForFeedManager;
+
 - (id)initWithNetworkService:(RBNetworkService *)networkService
           persistenceService:(RBPersistenceService *)dataService;
 
