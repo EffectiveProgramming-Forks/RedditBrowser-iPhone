@@ -6,6 +6,7 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *permalink;
 @property (nonatomic) NSString *author;
+@property (nonatomic) NSString *uuid;
 
 + (NSArray *)itemsForJSONFeed:(NSDictionary *)jsonDictionary;
 

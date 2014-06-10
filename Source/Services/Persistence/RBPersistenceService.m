@@ -10,7 +10,15 @@
     
 }
 
+- (void)deleteRedditItem:(RBRedditItem *)item {
+    
+}
+
 - (NSArray *)findAllItemsForFeed:(NSString *)feedName {
+    return @[];
+}
+
+- (NSArray *)findAllItemsForFeed:(NSString *)feedName notUUID:(NSString *)uuid {
     return @[];
 }
 

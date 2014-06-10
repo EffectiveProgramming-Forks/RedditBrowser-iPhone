@@ -7,6 +7,8 @@
 + (instancetype)persistenceService;
 
 - (void)saveRedditItem:(RBRedditItem *)item;
+- (void)deleteRedditItem:(RBRedditItem *)item;
 - (NSArray *)findAllItemsForFeed:(NSString *)feedName;
+- (NSArray *)findAllItemsForFeed:(NSString *)feedName notUUID:(NSString *)uuid;
 
 @end

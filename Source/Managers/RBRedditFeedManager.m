@@ -40,22 +40,30 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
                 NSArray *items = [RBRedditItem itemsForJSONFeed:response];
 
                 // 2. Save to core data
+                NSUUID *uuid = [NSUUID UUID];
                 for (RBRedditItem *item in items) {
+                    item.uuid = [uuid UUIDString];
                     [_persistenceService saveRedditItem:item];
                 }
                 
-                // 3. Update timer
+                // 3. Delete old items - ignoring deletion error for now but would likely want to consider handling this.
+                NSArray *oldItems = [_persistenceService findAllItemsForFeed:feedName notUUID:[uuid UUIDString]];
+                for (RBRedditItem *item in oldItems) {
+                    [_persistenceService deleteRedditItem:item];
+                }
+                
+                // 4. Update timer
                 [[NSUserDefaults standardUserDefaults] setValue:now forKey:kLastNetworkRefreshDate];
                 
-                // 4. Update model
+                // 5. Update model
                 [_delegateForFeedManager latestFeedItems:items];
                 
-                // 5. Check for nil block!
+                // 6. Check for nil block!
                 if (completionBlock) {
                     completionBlock(items);
                 }
             } else {
-                // 6. Bubble error up to UI?
+                // 1. Bubble error up to UI?
                 if (completionBlock) {
                     NSArray *items = [_persistenceService findAllItemsForFeed:feedName];
                     completionBlock(items);

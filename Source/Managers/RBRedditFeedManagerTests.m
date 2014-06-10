@@ -14,8 +14,11 @@
 
 @implementation RBRedditFeedManagerTests
 
+static NSString *kLastRefreshKey = @"LastNetworkRefreshDate";
+
 - (void)setUp {
     [super setUp];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastRefreshKey];
     _mockNetworkService = mock([RBNetworkService class]);
     _mockPersistenceService = mock([RBPersistenceService class]);
     _testObject = [[RBRedditFeedManager alloc] initWithNetworkService:_mockNetworkService
@@ -99,6 +102,7 @@
     RBRedditItem *item = [[RBRedditItem alloc] init];
     item.title = @"Star Wars";
     NSString *feed = @"/anything/non/null";
+    
     [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
     
     MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
@@ -117,11 +121,67 @@
     XCTAssertEqual(item2.subreddit, @"The Subreddit");
 }
 
+- (void)testThatAUUIDIsSetOnItemsBeforeTheyAreSaved {
+    NSDictionary *exampleJSONDictionary = [self createDictionaryOfRBRedditItem];
+    RBRedditItem *item = [[RBRedditItem alloc] init];
+    item.title = @"Star Wars";
+    NSString *feed = @"/anything/non/null";
+    
+    [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
+    
+    MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
+    [verifyCount(_mockNetworkService, times(1)) GET:anything()
+                                    completionBlock:[argument capture]];
+    void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
+    actualCompletionBlock(exampleJSONDictionary, nil);
+    
+    MKTArgumentCaptor *argument2 = [[MKTArgumentCaptor alloc] init];
+    [verifyCount(_mockPersistenceService, times(1)) saveRedditItem:[argument2 capture]];
+    RBRedditItem *item2 = [argument2 value];
+    
+    XCTAssertNotNil(item2.uuid);
+}
+
+- (void)testThatPersistenceManagerFetchesOldItems {
+    NSDictionary *exampleJSONDictionary = [self createDictionaryOfRBRedditItem];
+    RBRedditItem *item = [[RBRedditItem alloc] init];
+    item.title = @"Star Wars";
+    NSString *feed = @"/anything/non/null";
+    
+    [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
+    
+    MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
+    [verifyCount(_mockNetworkService, times(1)) GET:anything()
+                                    completionBlock:[argument capture]];
+    void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
+    actualCompletionBlock(exampleJSONDictionary, nil);
+    
+    [verifyCount(_mockPersistenceService, times(1)) findAllItemsForFeed:feed notUUID:anything()];
+}
+
+- (void)testThatPersistenceManagerDeletesOldItems {
+    NSDictionary *exampleJSONDictionary = [self createDictionaryOfRBRedditItem];
+    RBRedditItem *item = [[RBRedditItem alloc] init];
+    item.title = @"Star Wars";
+    NSString *feed = @"/anything/non/null";
+    RBRedditItem *deletableItem = [self redditItem];
+    [given([_mockPersistenceService findAllItemsForFeed:feed notUUID:anything()]) willReturn:@[deletableItem]];
+
+    [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
+    
+    MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
+    [verifyCount(_mockNetworkService, times(1)) GET:anything()
+                                    completionBlock:[argument capture]];
+    void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
+    actualCompletionBlock(exampleJSONDictionary, nil);
+    
+    [_mockPersistenceService deleteRedditItem:deletableItem];
+}
+
 - (void)testThatUserPreferencesIsUpdated {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feed = @"/generation/X";
     
-    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNil(lastRefreshDate);
 
     [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
@@ -132,18 +192,17 @@
     void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
     actualCompletionBlock(@{ }, nil);
     
-    lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNotNil(lastRefreshDate);
 }
 
 - (void)testThatTriadModelIsInformed {
     NSDictionary *exampleJSONDictionary = [self createDictionaryOfRBRedditItem];
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feed = @"/generation/X";
     id<RBRedditFeedManagerDelegate> delegate = mockProtocol(@protocol(RBRedditFeedManagerDelegate));
     _testObject.delegateForFeedManager = delegate;
     
-    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNil(lastRefreshDate);
     
     [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
@@ -162,10 +221,9 @@
 }
 
 - (void)testThatNilBlocksAreNotAttempted {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feed = @"/generation/X";
     
-    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNil(lastRefreshDate);
     
     [_testObject fetchFeed:feed completionBlock:nil];
@@ -176,16 +234,15 @@
     void (^actualCompletionBlock)(id response, NSError *error) = [argument value];
     actualCompletionBlock(@{ }, nil);
     
-    lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNotNil(lastRefreshDate);
 }
 
 - (void)testThatShouldFetchFromDatabaseWhenRefreshTimeHasntPassed {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feed = @"/generation/X";
     
     NSDate *lastRefreshDate = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setValue:lastRefreshDate forKey:lastRefreshKey];
+    [[NSUserDefaults standardUserDefaults] setValue:lastRefreshDate forKey:kLastRefreshKey];
     
     [_testObject fetchFeed:feed completionBlock:^(NSArray *feedItems) { }];
     
@@ -193,11 +250,10 @@
 }
 
 - (void)testThatShouldCheckForNilBlock {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feed = @"/generation/X";
     
     NSDate *lastRefreshDate = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setValue:lastRefreshDate forKey:lastRefreshKey];
+    [[NSUserDefaults standardUserDefaults] setValue:lastRefreshDate forKey:kLastRefreshKey];
     
     [_testObject fetchFeed:feed completionBlock:nil];
     
@@ -205,12 +261,11 @@
 }
 
 - (void)testThatWhenNetworkFetchFailsThenRetrieveDataFromCacheDatabase {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feedName = @"/generation/X";
     id<RBRedditFeedManagerDelegate> delegate = mockProtocol(@protocol(RBRedditFeedManagerDelegate));
     _testObject.delegateForFeedManager = delegate;
     
-    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNil(lastRefreshDate);
     
     [_testObject fetchFeed:feedName completionBlock:^(NSArray *feedItems) { }];
@@ -225,12 +280,11 @@
 }
 
 - (void)testThatWhenNetworkFetchFailsThenRetrieveDataFromCacheDatabaseUnlessNilCompletionBlockWasPassedIn {
-    NSString *lastRefreshKey = @"LastNetworkRefreshDate";
     NSString *feedName = @"/generation/X";
     id<RBRedditFeedManagerDelegate> delegate = mockProtocol(@protocol(RBRedditFeedManagerDelegate));
     _testObject.delegateForFeedManager = delegate;
     
-    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:lastRefreshKey];
+    NSDate *lastRefreshDate = [[NSUserDefaults standardUserDefaults] valueForKey:kLastRefreshKey];
     XCTAssertNil(lastRefreshDate);
     
     [_testObject fetchFeed:feedName completionBlock:nil];
@@ -245,6 +299,15 @@
 }
 
 #pragma mark - Private
+
+- (RBRedditItem *)redditItem {
+    RBRedditItem *item = [[RBRedditItem alloc] init];
+    item.title = @"The Old Title";
+    item.permalink = @"The Old Permalink";
+    item.author = @"The Old Author";
+    item.subreddit = @"The Old Subreddit";
+    return item;
+}
 
 - (NSDictionary *)createDictionaryOfRBRedditItem {
     NSDictionary *childData = @{ @"title" : @"The Title",
