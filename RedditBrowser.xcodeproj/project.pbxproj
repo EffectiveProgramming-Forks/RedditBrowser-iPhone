@@ -12,7 +12,7 @@
 		240ED41A1942FC9E00A8E300 /* RBRedditFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */; };
 		240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */; };
 		240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED420194400B000A8E300 /* RBPersistenceService.m */; };
-		240ED423194400C300A8E300 /* RBDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED422194400C300A8E300 /* RBDataServiceTests.m */; };
+		240ED423194400C300A8E300 /* RBPersistenceServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED422194400C300A8E300 /* RBPersistenceServiceTests.m */; };
 		240ED4251944155300A8E300 /* ListenToThis.json in Resources */ = {isa = PBXBuildFile; fileRef = 240ED4241944155300A8E300 /* ListenToThis.json */; };
 		240ED4291944163500A8E300 /* RBRedditItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4281944163500A8E300 /* RBRedditItem.m */; };
 		240ED42B19441A2700A8E300 /* RBRedditItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED42A19441A2700A8E300 /* RBRedditItemTests.m */; };
@@ -67,7 +67,7 @@
 		240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManagerTests.m; sourceTree = "<group>"; };
 		240ED41F194400B000A8E300 /* RBPersistenceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBPersistenceService.h; sourceTree = "<group>"; };
 		240ED420194400B000A8E300 /* RBPersistenceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceService.m; sourceTree = "<group>"; };
-		240ED422194400C300A8E300 /* RBDataServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBDataServiceTests.m; sourceTree = "<group>"; };
+		240ED422194400C300A8E300 /* RBPersistenceServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceServiceTests.m; sourceTree = "<group>"; };
 		240ED4241944155300A8E300 /* ListenToThis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListenToThis.json; sourceTree = "<group>"; };
 		240ED4271944163500A8E300 /* RBRedditItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRedditItem.h; sourceTree = "<group>"; };
 		240ED4281944163500A8E300 /* RBRedditItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditItem.m; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		24A50FB4194562DA00F148EE /* RedditBrowserDataModel-01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RedditBrowserDataModel-01.xcdatamodel"; sourceTree = "<group>"; };
 		24BD45CC1945637700665551 /* RedditItemEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditItemEntity.h; sourceTree = "<group>"; };
 		24BD45CD1945637700665551 /* RedditItemEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItemEntity.m; sourceTree = "<group>"; };
-		24BD45CF1945639100665551 /* RBReditBrowserEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBReditBrowserEntities.h; sourceTree = "<group>"; };
+		24BD45CF1945639100665551 /* RBRedditBrowserEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBRedditBrowserEntities.h; sourceTree = "<group>"; };
 		24C42C7E193DC9C30082BD27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24DA44BE193E967D00EFE6BC /* RedditBrowserTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedditBrowserTests-Prefix.pch"; sourceTree = "<group>"; };
 		32DAB1ADBDE54143940025E4 /* Pods-RedditBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditBrowserTests.xcconfig"; path = "Pods/Pods-RedditBrowserTests.xcconfig"; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				24A50FAF1945629800F148EE /* Entities */,
 				240ED41F194400B000A8E300 /* RBPersistenceService.h */,
 				240ED420194400B000A8E300 /* RBPersistenceService.m */,
-				240ED422194400C300A8E300 /* RBDataServiceTests.m */,
+				240ED422194400C300A8E300 /* RBPersistenceServiceTests.m */,
 				2453CB39194782EB00CEC1F1 /* RBPersistenceServiceFactory.h */,
 				2453CB3A194782EB00CEC1F1 /* RBPersistenceServiceFactory.m */,
 			);
@@ -367,7 +367,7 @@
 			children = (
 				24BD45CC1945637700665551 /* RedditItemEntity.h */,
 				24BD45CD1945637700665551 /* RedditItemEntity.m */,
-				24BD45CF1945639100665551 /* RBReditBrowserEntities.h */,
+				24BD45CF1945639100665551 /* RBRedditBrowserEntities.h */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -568,7 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				244D5A6119416DFD00DD151E /* RBSubredditModelTests.m in Sources */,
-				240ED423194400C300A8E300 /* RBDataServiceTests.m in Sources */,
+				240ED423194400C300A8E300 /* RBPersistenceServiceTests.m in Sources */,
 				240ED42B19441A2700A8E300 /* RBRedditItemTests.m in Sources */,
 				244D5A731941FF7700DD151E /* ASYMacros.m in Sources */,
 				244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */,

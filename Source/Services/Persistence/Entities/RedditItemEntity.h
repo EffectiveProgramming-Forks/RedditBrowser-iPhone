@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString * subreddit;
 @property (nonatomic, retain) NSString * permalink;
 @property (nonatomic, retain) NSString * author;
+@property (nonatomic, retain) NSString * uuid;
 
 @end

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="RedditItem" representedClassName="RedditItemEntity" syncable="YES">
-        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="permalink" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subreddit" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="author" attributeType="String" syncable="YES"/>
+        <attribute name="permalink" attributeType="String" syncable="YES"/>
+        <attribute name="subreddit" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RedditItem" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="RedditItem" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

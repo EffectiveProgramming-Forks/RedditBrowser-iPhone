@@ -15,5 +15,6 @@
 @dynamic subreddit;
 @dynamic permalink;
 @dynamic author;
+@dynamic uuid;
 
 @end

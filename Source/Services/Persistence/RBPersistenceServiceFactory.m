@@ -13,7 +13,6 @@
 
 static RBPersistenceServiceFactory *persistenceServiceFactory;
 static NSPersistentStoreCoordinator *persistentStoreCoordinator;
-//static NSManagedObjectContext *mainManagedObjectContext;
 
 + (BOOL)setup {
     // data model
