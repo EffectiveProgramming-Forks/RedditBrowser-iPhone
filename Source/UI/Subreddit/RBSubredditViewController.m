@@ -6,6 +6,7 @@
 #import "RBRedditFeedManager.h"
 #import "RBNetworkService.h"
 #import "RBPersistenceService.h"
+#import "RBPersistenceServiceFactory.h"
 
 @interface RBSubredditViewController ()
 
@@ -19,33 +20,16 @@
 
 - (void)loadView {
     [super loadView];
-    [self setupNavigationBar];
     
-    RBPersistenceService *persistenceService = [RBPersistenceService persistenceService];
+    RBPersistenceServiceFactory *persistenceServiceFactory = [RBPersistenceServiceFactory persistenceServiceFactory];
     RBNetworkService *networkService = [RBNetworkService networkService];
     RBRedditFeedManager *feedManager = [[RBRedditFeedManager alloc] initWithNetworkService:networkService
-                                                                        persistenceService:persistenceService];
+                                                                 persistenceServiceFactory:persistenceServiceFactory];
     _subredditModel = [[RBSubredditModel alloc] initWithSubredditFeedManager:feedManager];
-    _subredditView = [[RBSubredditView alloc] initWithFrame:self.view.bounds];
+    _subredditView = [[RBSubredditView alloc] initWithFrame:self.view.bounds navigationItem:self.navigationItem];
     _subredditRouter = [[RBSubredditRouter alloc] initWithModel:_subredditModel view:_subredditView];
     
     [self.view addSubview:_subredditView];
-}
-
-#pragma mark - Actions
-
-- (void)refreshButtonWasTapped:(UIBarButtonItem *)refreshButton {
-    NSLog(@"Refresh button was tapped.");
-}
-
-#pragma mark - Private
-
-- (void)setupNavigationBar {
-    self.title = NSLocalizedString(@"SubredditViewController.Title", nil);
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                   target:self
-                                                                                   action:@selector(refreshButtonWasTapped:)];
-    self.navigationItem.rightBarButtonItem = refreshButton;
 }
 
 @end

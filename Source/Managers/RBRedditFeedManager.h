@@ -3,7 +3,7 @@
 typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
 
 @class RBNetworkService;
-@class RBPersistenceService;
+@class RBPersistenceServiceFactory;
 
 @protocol RBRedditFeedManagerDelegate <NSObject>
 
@@ -21,7 +21,7 @@ typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
 @property (nonatomic) id<RBRedditFeedManagerDelegate> delegateForFeedManager;
 
 - (id)initWithNetworkService:(RBNetworkService *)networkService
-          persistenceService:(RBPersistenceService *)dataService;
+   persistenceServiceFactory:(RBPersistenceServiceFactory *)persistenceServiceFactory;
 
 - (void)fetchFeed:(NSString *)feedName
   completionBlock:(RBRedditFeedManagerCompletionBlock)completionBlock;

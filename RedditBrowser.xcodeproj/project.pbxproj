@@ -38,6 +38,9 @@
 		244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6319416E5400DD151E /* RBNetworkServiceTests.m */; };
 		244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */; };
 		244D5A731941FF7700DD151E /* ASYMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 244D5A6B1941FF6D00DD151E /* ASYMacros.m */; };
+		2453CB371947804000CEC1F1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2453CB361947804000CEC1F1 /* CoreData.framework */; };
+		2453CB381947804A00CEC1F1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2453CB361947804000CEC1F1 /* CoreData.framework */; };
+		2453CB3B194782EB00CEC1F1 /* RBPersistenceServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2453CB3A194782EB00CEC1F1 /* RBPersistenceServiceFactory.m */; };
 		24A50FB3194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24A50FB1194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld */; };
 		24BD45CE1945637700665551 /* RedditItemEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BD45CD1945637700665551 /* RedditItemEntity.m */; };
 		24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C42C7D193DC9C30082BD27 /* Localizable.strings */; };
@@ -105,6 +108,9 @@
 		244D5A6D1941FF6D00DD151E /* ASYTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASYTesting.h; sourceTree = "<group>"; };
 		244D5A6E1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ASYAsynchronousTesting.h"; sourceTree = "<group>"; };
 		244D5A6F1941FF6D00DD151E /* XCTestCase+ASYAsynchronousTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+ASYAsynchronousTesting.m"; sourceTree = "<group>"; };
+		2453CB361947804000CEC1F1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2453CB39194782EB00CEC1F1 /* RBPersistenceServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBPersistenceServiceFactory.h; sourceTree = "<group>"; };
+		2453CB3A194782EB00CEC1F1 /* RBPersistenceServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceServiceFactory.m; sourceTree = "<group>"; };
 		24A50FB2194562CD00F148EE /* RedditBrowserDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RedditBrowserDataModel.xcdatamodel; sourceTree = "<group>"; };
 		24A50FB4194562DA00F148EE /* RedditBrowserDataModel-01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RedditBrowserDataModel-01.xcdatamodel"; sourceTree = "<group>"; };
 		24BD45CC1945637700665551 /* RedditItemEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditItemEntity.h; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2453CB371947804000CEC1F1 /* CoreData.framework in Frameworks */,
 				244296E1193DA18000207CAF /* CoreGraphics.framework in Frameworks */,
 				244296E3193DA18000207CAF /* UIKit.framework in Frameworks */,
 				244296DF193DA18000207CAF /* Foundation.framework in Frameworks */,
@@ -134,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2453CB381947804A00CEC1F1 /* CoreData.framework in Frameworks */,
 				244296F8193DA18000207CAF /* XCTest.framework in Frameworks */,
 				244296FA193DA18000207CAF /* UIKit.framework in Frameworks */,
 				244296F9193DA18000207CAF /* Foundation.framework in Frameworks */,
@@ -161,6 +169,8 @@
 				240ED41F194400B000A8E300 /* RBPersistenceService.h */,
 				240ED420194400B000A8E300 /* RBPersistenceService.m */,
 				240ED422194400C300A8E300 /* RBDataServiceTests.m */,
+				2453CB39194782EB00CEC1F1 /* RBPersistenceServiceFactory.h */,
+				2453CB3A194782EB00CEC1F1 /* RBPersistenceServiceFactory.m */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -200,6 +210,7 @@
 		244296DD193DA18000207CAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2453CB361947804000CEC1F1 /* CoreData.framework */,
 				244296DE193DA18000207CAF /* Foundation.framework */,
 				244296E0193DA18000207CAF /* CoreGraphics.framework */,
 				244296E2193DA18000207CAF /* UIKit.framework */,
@@ -537,6 +548,7 @@
 				244D5A5A19416DF400DD151E /* RBSubredditModel.m in Sources */,
 				240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */,
 				244D5A5919416DF400DD151E /* RBNetworkService.m in Sources */,
+				2453CB3B194782EB00CEC1F1 /* RBPersistenceServiceFactory.m in Sources */,
 				240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */,
 				244D5A5E19416DF400DD151E /* RBSubredditTableViewCell.m in Sources */,
 				240ED4291944163500A8E300 /* RBRedditItem.m in Sources */,

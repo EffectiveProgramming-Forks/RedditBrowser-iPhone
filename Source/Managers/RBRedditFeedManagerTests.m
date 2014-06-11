@@ -1,5 +1,6 @@
 #import <XCTest/XCTest.h>
 #import "RBNetworkService.h"
+#import "RBPersistenceServiceFactory.h"
 #import "RBPersistenceService.h"
 #import "RBRedditFeedManager.h"
 #import "RBRedditItem.h"
@@ -8,6 +9,7 @@
 
 @property (nonatomic) RBRedditFeedManager *testObject;
 @property (nonatomic) RBNetworkService *mockNetworkService;
+@property (nonatomic) RBPersistenceServiceFactory *mockPersistenceServiceFactory;
 @property (nonatomic) RBPersistenceService *mockPersistenceService;
 
 @end
@@ -20,9 +22,12 @@ static NSString *kLastRefreshKey = @"LastNetworkRefreshDate";
     [super setUp];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastRefreshKey];
     _mockNetworkService = mock([RBNetworkService class]);
+    _mockPersistenceServiceFactory = mock([RBPersistenceServiceFactory class]);
     _mockPersistenceService = mock([RBPersistenceService class]);
+    [given([_mockPersistenceServiceFactory temporaryPersistenceService]) willReturn:_mockPersistenceService];
+    [given([_mockPersistenceServiceFactory mainPersistenceService]) willReturn:_mockPersistenceService];
     _testObject = [[RBRedditFeedManager alloc] initWithNetworkService:_mockNetworkService
-                                                   persistenceService:_mockPersistenceService];
+                                            persistenceServiceFactory:_mockPersistenceServiceFactory];
 }
 
 - (void)tearDown {

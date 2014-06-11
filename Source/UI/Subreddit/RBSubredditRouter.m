@@ -12,10 +12,10 @@
 
 @implementation RBSubredditRouter
 
-// Eventually comes from user selection!
+// STORY: eventually comes from user selection!
 static NSString *kDefaltFeedName = @"ListenToThis";
 
-// Get rid of this!
+// STORY: get rid of this!
 static NSString *kHostname = @"http://www.reddit.com/";
 
 - (id)initWithModel:(RBSubredditModel *)subRedditModel view:(id<RBSubredditView>)subRedditView {

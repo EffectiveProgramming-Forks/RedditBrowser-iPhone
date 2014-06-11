@@ -1,9 +1,20 @@
 #import "RBPersistenceService.h"
+#import <CoreData/CoreData.h>
+
+@interface RBPersistenceService ()
+
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@end
 
 @implementation RBPersistenceService
 
-+ (instancetype)persistenceService {
-    return [[RBPersistenceService alloc] init];
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+    self = [super init];
+    if (self) {
+        _managedObjectContext = managedObjectContext;
+    }
+    return self;
 }
 
 - (void)saveRedditItem:(RBRedditItem *)item {

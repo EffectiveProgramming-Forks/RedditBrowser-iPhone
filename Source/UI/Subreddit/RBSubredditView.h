@@ -18,4 +18,6 @@
 
 @interface RBSubredditView : UIView<RBSubredditView>
 
+- (id)initWithFrame:(CGRect)frame navigationItem:(UINavigationItem *)navigationItem;
+
 @end

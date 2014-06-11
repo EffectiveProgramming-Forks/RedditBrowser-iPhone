@@ -1,10 +1,11 @@
 #import <Foundation/Foundation.h>
 
+@class NSManagedObjectContext;
 @class RBRedditItem;
 
 @interface RBPersistenceService : NSObject
 
-+ (instancetype)persistenceService;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
 
 - (void)saveRedditItem:(RBRedditItem *)item;
 - (void)deleteRedditItem:(RBRedditItem *)item;

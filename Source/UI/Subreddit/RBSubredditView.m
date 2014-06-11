@@ -16,9 +16,10 @@
 
 static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReuseIdentifier";
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame navigationItem:(UINavigationItem *)navigationItem {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setupNavigationItem:navigationItem];
         _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         _tableView.rowHeight = [RBSubredditTableViewCell heightForRow];
         _tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -66,6 +67,22 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
     RBRedditItem *item = _redditItems[indexPath.row];
     [self.delegateForView itemWasSelected:item];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Actions
+
+- (void)refreshButtonWasTapped:(UIBarButtonItem *)refreshButton {
+    NSLog(@"Refresh button was tapped.");
+}
+
+#pragma mark - Private
+
+- (void)setupNavigationItem:(UINavigationItem *)navigationItem {
+    navigationItem.title = NSLocalizedString(@"SubredditViewController.Title", nil);
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                   target:self
+                                                                                   action:@selector(refreshButtonWasTapped:)];
+    navigationItem.rightBarButtonItem = refreshButton;
 }
 
 @end
