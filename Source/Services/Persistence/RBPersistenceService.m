@@ -60,7 +60,16 @@
     }
 }
 
-- (NSArray *)findAllItemsForFeed:(NSString *)feedName {
+- (void)save {
+    NSError *error = nil;
+    BOOL success = [_managedObjectContext save:&error];
+    if (!success) {
+        // STORY: log this error - bubble up to management layer
+        NSLog(@"Error saving managed object context: %@", error);
+    }
+}
+
+- (NSArray *)findAllItemsForSubreddit:(NSString *)feedName {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RedditItem"];
     NSString *format = @"subreddit = %@";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:format, feedName];
@@ -75,7 +84,7 @@
     }
 }
 
-- (NSArray *)findAllItemsForFeed:(NSString *)feedName notUUID:(NSString *)uuid {
+- (NSArray *)findAllItemsForSubreddit:(NSString *)feedName notUUID:(NSString *)uuid {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RedditItem"];
     NSString *format = @"subreddit = %@ && uuid <> %@";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:format, feedName, uuid];

@@ -5,6 +5,7 @@
 @protocol RBSubredditViewDelegate <NSObject>
 
 - (void)itemWasSelected:(RBRedditItem *)item;
+- (void)refreshButtonWasTapped;
 
 @end
 
@@ -12,7 +13,7 @@
 
 @property (nonatomic, weak) id<RBSubredditViewDelegate> delegateForView;
 
-- (void)setItems:(NSArray *)items forFeedName:(NSString *)feedName;
+- (void)setItems:(NSArray *)items forSubreddit:(NSString *)feedName;
 
 @end
 

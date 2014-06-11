@@ -154,8 +154,8 @@ static NSInteger kAsyncSignalTimeOut = 1.0;
     }];
     
     NSString *expectedHost = @"www.reddit.com";
-    NSString *feed = @"/r/ListenToThis";
-    NSString *urlAsString = [NSString stringWithFormat:@"http://%@%@", expectedHost, feed];
+    NSString *subreddit = @"/r/ListenToThis";
+    NSString *urlAsString = [NSString stringWithFormat:@"http://%@%@", expectedHost, subreddit];
     [_testObject GET:urlAsString
      completionBlock:^(id response, NSError *error) {
          if (response && !error) {
@@ -181,8 +181,8 @@ static NSInteger kAsyncSignalTimeOut = 1.0;
     }];
     
     NSString *host = @"www.reddit.com";
-    NSString *feed = @"/r/ListenToThis";
-    NSString *expectedURL = [NSString stringWithFormat:@"http://%@%@", host, feed];
+    NSString *subreddit = @"/r/ListenToThis";
+    NSString *expectedURL = [NSString stringWithFormat:@"http://%@%@", host, subreddit];
     [_testObject GET:expectedURL
      completionBlock:^(id response, NSError *error) {
          if (response && !error) {
@@ -208,8 +208,8 @@ static NSInteger kAsyncSignalTimeOut = 1.0;
     }];
     
     NSString *host = @"www.reddit.com";
-    NSString *feed = @"/r/ListenToThis";
-    NSString *expectedURL = [NSString stringWithFormat:@"http://%@%@", host, feed];
+    NSString *subreddit = @"/r/ListenToThis";
+    NSString *expectedURL = [NSString stringWithFormat:@"http://%@%@", host, subreddit];
     [_testObject GET:expectedURL
      completionBlock:^(NSDictionary *jsonResponse, NSError *error) {
          if (jsonResponse && !error) {

@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 
-@class RBRedditFeedManager;
+@class RBSubredditManager;
 
 @protocol RBSubredditModelDelegate <NSObject>
 
-- (void)receivedSubredditItems:(NSArray *)items forFeedName:(NSString *)feedName;
+- (void)receivedItems:(NSArray *)items forSubreddit:(NSString *)feedName;
 
 @end
 
@@ -12,8 +12,8 @@
 
 @property (nonatomic, weak) id<RBSubredditModelDelegate> delegateForModel;
 
-- (id)initWithSubredditFeedManager:(RBRedditFeedManager *)feedManager;
+- (id)initWithSubredditManager:(RBSubredditManager *)feedManager;
 
-- (void)fetchSubredditFeed:(NSString *)feedName;
+- (void)fetchSubreddit:(NSString *)subredditName force:(BOOL)force;
 
 @end

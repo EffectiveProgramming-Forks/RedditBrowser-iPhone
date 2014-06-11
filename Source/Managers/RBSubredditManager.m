@@ -1,17 +1,17 @@
-#import "RBRedditFeedManager.h"
+#import "RBSubredditManager.h"
 #import "RBPersistenceServiceFactory.h"
 #import "RBPersistenceService.h"
 #import "RBNetworkService.h"
 #import "RBReddititem.h"
 
-@interface RBRedditFeedManager ()
+@interface RBSubredditManager ()
 
 @property (nonatomic) RBNetworkService *networkService;
 @property (nonatomic) RBPersistenceServiceFactory *persistenceServiceFactory;
 
 @end
 
-@implementation RBRedditFeedManager
+@implementation RBSubredditManager
 
 static NSString *scheme = @"http://";
 static NSString *kHardCodedHostName = @"www.reddit.com";
@@ -28,11 +28,13 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
     return self;
 }
 
-- (void)fetchFeed:(NSString *)feedName completionBlock:(RBRedditFeedManagerCompletionBlock)completionBlock {
+- (void)fetchSubreddit:(NSString *)subreddit
+            force:(BOOL)force
+  completionBlock:(RBSubredditManagerCompletionBlock)completionBlock {
     NSDate *now = [NSDate date];
-    BOOL shouldFetchFromNetwork = [self shouldFetchFromNetwork:now];
+    BOOL shouldFetchFromNetwork = (force || [self shouldFetchFromNetwork:now]);
     if (shouldFetchFromNetwork) {
-        NSString *feedNamePath = [NSString stringWithFormat:@"/r/%@.json", feedName];
+        NSString *feedNamePath = [NSString stringWithFormat:@"/r/%@.json", subreddit];
         NSString *urlAsString = [NSString stringWithFormat:@"%@%@%@", scheme, kHardCodedHostName, feedNamePath];
         [_networkService GET:urlAsString completionBlock:^(NSDictionary *response, NSError *error) {
             RBPersistenceService *persistenceService = [_persistenceServiceFactory temporaryPersistenceService];
@@ -41,20 +43,22 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
                 NSArray *items = [RBRedditItem itemsForJSONFeed:response];
 
                 // 2. Save to core data
-                NSUUID *uuid = [NSUUID UUID];
+                NSString *uuid = [[NSUUID UUID] UUIDString];
                 for (RBRedditItem *item in items) {
-                    item.uuid = [uuid UUIDString];
+                    item.uuid = uuid;
                     [persistenceService saveRedditItem:item];
                 }
                 
-                // 3. Delete old items - ignoring deletion error for now but would likely want to consider handling this.
-                NSArray *oldItems = [persistenceService findAllItemsForFeed:feedName notUUID:[uuid UUIDString]];
+                // 3. Delete old items -
+                // STORY: handling deletion error
+                NSArray *oldItems = [persistenceService findAllItemsForSubreddit:subreddit notUUID:uuid];
                 for (RBRedditItem *item in oldItems) {
                     [persistenceService deleteRedditItem:item];
                 }
                 
                 // 4. Update timer
                 [[NSUserDefaults standardUserDefaults] setValue:now forKey:kLastNetworkRefreshDate];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 // 5. Update model
                 [_delegateForFeedManager latestFeedItems:items];
@@ -66,7 +70,7 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
             } else {
                 // 1. Bubble error up to UI?
                 if (completionBlock) {
-                    NSArray *items = [persistenceService findAllItemsForFeed:feedName];
+                    NSArray *items = [persistenceService findAllItemsForSubreddit:subreddit];
                     completionBlock(items);
                 }
             }
@@ -74,7 +78,7 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
     } else {
         if (completionBlock) {
             RBPersistenceService *persistenceService = [_persistenceServiceFactory mainPersistenceService];
-            NSArray *items = [persistenceService findAllItemsForFeed:feedName];
+            NSArray *items = [persistenceService findAllItemsForSubreddit:subreddit];
             completionBlock(items);
         }
     }

@@ -1,11 +1,11 @@
 #import <XCTest/XCTest.h>
 #import "RBSubredditModel.h"
-#import "RBRedditFeedManager.h"
+#import "RBSubredditManager.h"
 
 @interface RBSubredditModelTests : XCTestCase <RBSubredditModelDelegate>
 
 @property (nonatomic) RBSubredditModel *testObject;
-@property (nonatomic) RBRedditFeedManager *mockFeedManager;
+@property (nonatomic) RBSubredditManager *mockFeedManager;
 @property (nonatomic) NSString *signal;
 @property (nonatomic) NSArray *subredditTestItems;
 
@@ -19,32 +19,34 @@ static NSInteger kAsyncSignalTimeOut = 1.0;
     [super setUp];
     _signal = @"AsyncSignal";
     _subredditTestItems = @[@"a", @"b", @"c"];
-    _mockFeedManager = mock([RBRedditFeedManager class]);
-    _testObject = [[RBSubredditModel alloc] initWithSubredditFeedManager:_mockFeedManager];
+    _mockFeedManager = mock([RBSubredditManager class]);
+    _testObject = [[RBSubredditModel alloc] initWithSubredditManager:_mockFeedManager];
 }
 
 - (void)tearDown {
     [super tearDown];
 }
 
-- (void)testFetchSubredditFeedsPassesRequestToTheRedditFeedManager {
+- (void)testFetchSubredditPassesRequestToTheSubredditManager {
     NSString *feedname = @"/a/b/c";
-    [_testObject fetchSubredditFeed:feedname];
+    [_testObject fetchSubreddit:feedname force:NO];
     
-    [verifyCount(_mockFeedManager, times(1)) fetchFeed:feedname
+    [verifyCount(_mockFeedManager, times(1)) fetchSubreddit:feedname
+                                                 force:NO
                                        completionBlock:anything()];
 }
 
-- (void)testFetchSubredditFeedsPassesResultsTooDelegate {
+- (void)testFetchSubredditPassesResultsToDelegate {
     NSString *feedname = @"/1/2/3";
     _testObject.delegateForModel = self;
     
-    [_testObject fetchSubredditFeed:feedname];
+    [_testObject fetchSubreddit:feedname force:YES];
     
     MKTArgumentCaptor *argument = [[MKTArgumentCaptor alloc] init];
-    [verifyCount(_mockFeedManager, times(1)) fetchFeed:feedname
+    [verifyCount(_mockFeedManager, times(1)) fetchSubreddit:feedname
+                                                 force:YES
                                        completionBlock:[argument capture]];
-    RBRedditFeedManagerCompletionBlock block = [argument value];
+    RBSubredditManagerCompletionBlock block = [argument value];
     block(_subredditTestItems);
 
     BOOL signaled = [self asyWaitForSignal:_signal timeout:kAsyncSignalTimeOut];
@@ -53,7 +55,7 @@ static NSInteger kAsyncSignalTimeOut = 1.0;
 
 #pragma mark - RBSubredditModelDelegate
 
-- (void)receivedSubredditItems:(NSArray *)items forFeedName:(NSString *)feedName {
+- (void)receivedItems:(NSArray *)items forSubreddit:(NSString *)feedName {
     XCTAssertTrue(feedName, @"/1/2/3");
     if ([items isEqual:_subredditTestItems]) {
         [self asySignal:_signal];

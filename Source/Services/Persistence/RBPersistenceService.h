@@ -9,7 +9,9 @@
 
 - (void)saveRedditItem:(RBRedditItem *)item;
 - (void)deleteRedditItem:(RBRedditItem *)item;
-- (NSArray *)findAllItemsForFeed:(NSString *)feedName;
-- (NSArray *)findAllItemsForFeed:(NSString *)feedName notUUID:(NSString *)uuid;
+- (void)save;
+
+- (NSArray *)findAllItemsForSubreddit:(NSString *)feedName;
+- (NSArray *)findAllItemsForSubreddit:(NSString *)feedName notUUID:(NSString *)uuid;
 
 @end

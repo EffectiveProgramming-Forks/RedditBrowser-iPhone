@@ -3,7 +3,7 @@
 #import "RBSubredditRouter.h"
 #import "RBSubredditModel.h"
 #import "RBSubredditView.h"
-#import "RBRedditFeedManager.h"
+#import "RBSubredditManager.h"
 #import "RBNetworkService.h"
 #import "RBPersistenceService.h"
 #import "RBPersistenceServiceFactory.h"
@@ -23,9 +23,9 @@
     
     RBPersistenceServiceFactory *persistenceServiceFactory = [RBPersistenceServiceFactory persistenceServiceFactory];
     RBNetworkService *networkService = [RBNetworkService networkService];
-    RBRedditFeedManager *feedManager = [[RBRedditFeedManager alloc] initWithNetworkService:networkService
+    RBSubredditManager *feedManager = [[RBSubredditManager alloc] initWithNetworkService:networkService
                                                                  persistenceServiceFactory:persistenceServiceFactory];
-    _subredditModel = [[RBSubredditModel alloc] initWithSubredditFeedManager:feedManager];
+    _subredditModel = [[RBSubredditModel alloc] initWithSubredditManager:feedManager];
     _subredditView = [[RBSubredditView alloc] initWithFrame:self.view.bounds navigationItem:self.navigationItem];
     _subredditRouter = [[RBSubredditRouter alloc] initWithModel:_subredditModel view:_subredditView];
     

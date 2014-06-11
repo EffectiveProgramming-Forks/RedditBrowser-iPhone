@@ -1,9 +1,9 @@
 #import "RBSubredditModel.h"
-#import "RBRedditFeedManager.h"
+#import "RBSubredditManager.h"
 
 @interface RBSubredditModel ()
 
-@property (nonatomic) RBRedditFeedManager *feedManager;
+@property (nonatomic) RBSubredditManager *feedManager;
 
 @end
 
@@ -11,7 +11,7 @@
 
 @synthesize delegateForModel;
 
-- (id)initWithSubredditFeedManager:(RBRedditFeedManager *)feedManager {
+- (id)initWithSubredditManager:(RBSubredditManager *)feedManager {
     self = [super init];
     if (self) {
         _feedManager = feedManager;
@@ -19,11 +19,11 @@
     return self;
 }
 
-- (void)fetchSubredditFeed:(NSString *)feedName {
+- (void)fetchSubreddit:(NSString *)subredditName force:(BOOL)force {
     __weak RBSubredditModel *wself = self;
-    [_feedManager fetchFeed:feedName completionBlock:^(NSArray *feedItems) {
+    [_feedManager fetchSubreddit:subredditName force:force completionBlock:^(NSArray *subredditItems) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [wself.delegateForModel receivedSubredditItems:feedItems forFeedName:feedName];
+            [wself.delegateForModel receivedItems:subredditItems forSubreddit:subredditName];
         });
     }];
 }

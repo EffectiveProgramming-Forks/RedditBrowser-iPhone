@@ -18,4 +18,13 @@
     return [NSArray arrayWithArray:items];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"{ title: %@, author: %@, permalink: %@, subreddit: %@, uuid: %@ }",
+            self.title,
+            self.author,
+            self.permalink,
+            self.subreddit,
+            self.uuid];
+}
+
 @end

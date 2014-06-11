@@ -1,11 +1,11 @@
 #import <Foundation/Foundation.h>
 
-typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
+typedef void (^RBSubredditManagerCompletionBlock)(NSArray *feedItems);
 
 @class RBNetworkService;
 @class RBPersistenceServiceFactory;
 
-@protocol RBRedditFeedManagerDelegate <NSObject>
+@protocol RBSubredditManagerDelegate <NSObject>
 
 - (void)latestFeedItems:(NSArray *)feedItems;
 
@@ -16,14 +16,15 @@ typedef void (^RBRedditFeedManagerCompletionBlock)(NSArray *feedItems);
  * - logic for fetching from network
  * - logic for fetching and caching to local database
  */
-@interface RBRedditFeedManager : NSObject
+@interface RBSubredditManager : NSObject
 
-@property (nonatomic) id<RBRedditFeedManagerDelegate> delegateForFeedManager;
+@property (nonatomic) id<RBSubredditManagerDelegate> delegateForFeedManager;
 
 - (id)initWithNetworkService:(RBNetworkService *)networkService
    persistenceServiceFactory:(RBPersistenceServiceFactory *)persistenceServiceFactory;
 
-- (void)fetchFeed:(NSString *)feedName
-  completionBlock:(RBRedditFeedManagerCompletionBlock)completionBlock;
+- (void)fetchSubreddit:(NSString *)feedName
+            force:(BOOL)force
+  completionBlock:(RBSubredditManagerCompletionBlock)completionBlock;
 
 @end

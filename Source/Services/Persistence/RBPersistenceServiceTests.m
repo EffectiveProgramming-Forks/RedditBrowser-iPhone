@@ -89,7 +89,7 @@
     [_testObject saveRedditItem:item1];
     [_testObject saveRedditItem:item2];
     
-    NSArray *items = [_testObject findAllItemsForFeed:@"Furniture"];
+    NSArray *items = [_testObject findAllItemsForSubreddit:@"Furniture"];
     
     XCTAssertEqual([items count], 2);
 }
@@ -124,7 +124,7 @@
     [_testObject saveRedditItem:item3];
     [_testObject saveRedditItem:item4];
     
-    NSArray *items = [_testObject findAllItemsForFeed:@"Furniture" notUUID:@"64DigitNumberFromLongTimeAgo"];
+    NSArray *items = [_testObject findAllItemsForSubreddit:@"Furniture" notUUID:@"64DigitNumberFromLongTimeAgo"];
     
     XCTAssertEqual([items count], 3);
     RedditItemEntity *entity = items[0];

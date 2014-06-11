@@ -33,7 +33,7 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 
 #pragma mark - API
 
-- (void)setItems:(NSArray *)items forFeedName:(NSString *)feedName {
+- (void)setItems:(NSArray *)items forSubreddit:(NSString *)feedName {
     _feedName = feedName;
     _redditItems = items;
     [_tableView reloadData];
@@ -72,7 +72,7 @@ static NSString *kRBSubredditViewCellReuseIdentifier = @"RBSubredditViewCellReus
 #pragma mark - Actions
 
 - (void)refreshButtonWasTapped:(UIBarButtonItem *)refreshButton {
-    NSLog(@"Refresh button was tapped.");
+    [self.delegateForView refreshButtonWasTapped];
 }
 
 #pragma mark - Private

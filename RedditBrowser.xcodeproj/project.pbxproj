@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40A1942EC0900A8E300 /* RBURLValidator.m */; };
 		240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */; };
-		240ED41A1942FC9E00A8E300 /* RBRedditFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */; };
-		240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */; };
+		240ED41A1942FC9E00A8E300 /* RBSubredditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED4191942FC9E00A8E300 /* RBSubredditManager.m */; };
+		240ED41D1942FD1C00A8E300 /* RBSubredditManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED41B1942FD1400A8E300 /* RBSubredditManagerTests.m */; };
 		240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED420194400B000A8E300 /* RBPersistenceService.m */; };
 		240ED423194400C300A8E300 /* RBPersistenceServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 240ED422194400C300A8E300 /* RBPersistenceServiceTests.m */; };
 		240ED4251944155300A8E300 /* ListenToThis.json in Resources */ = {isa = PBXBuildFile; fileRef = 240ED4241944155300A8E300 /* ListenToThis.json */; };
@@ -44,6 +44,7 @@
 		24A50FB3194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24A50FB1194562CD00F148EE /* RedditBrowserDataModel.xcdatamodeld */; };
 		24BD45CE1945637700665551 /* RedditItemEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BD45CD1945637700665551 /* RedditItemEntity.m */; };
 		24C42C7F193DC9C30082BD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24C42C7D193DC9C30082BD27 /* Localizable.strings */; };
+		24D8AAFA194823D200CEAE97 /* RedditItemEntity+RBExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D8AAF9194823D200CEAE97 /* RedditItemEntity+RBExtensions.m */; };
 		48781F28E5D24BFB9D7A1311 /* libPods-RedditBrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E8E49EA977433B9132FDD5 /* libPods-RedditBrowserTests.a */; };
 		6E3416FEE40B4455B09BB618 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D34C235B040C5B09B2F34 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -62,9 +63,9 @@
 		240ED4091942EC0900A8E300 /* RBURLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBURLValidator.h; sourceTree = "<group>"; };
 		240ED40A1942EC0900A8E300 /* RBURLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidator.m; sourceTree = "<group>"; };
 		240ED40C1942ECE000A8E300 /* RBURLValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBURLValidatorTests.m; sourceTree = "<group>"; };
-		240ED4181942FC9E00A8E300 /* RBRedditFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBRedditFeedManager.h; sourceTree = "<group>"; };
-		240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManager.m; sourceTree = "<group>"; };
-		240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBRedditFeedManagerTests.m; sourceTree = "<group>"; };
+		240ED4181942FC9E00A8E300 /* RBSubredditManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSubredditManager.h; sourceTree = "<group>"; };
+		240ED4191942FC9E00A8E300 /* RBSubredditManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditManager.m; sourceTree = "<group>"; };
+		240ED41B1942FD1400A8E300 /* RBSubredditManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSubredditManagerTests.m; sourceTree = "<group>"; };
 		240ED41F194400B000A8E300 /* RBPersistenceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBPersistenceService.h; sourceTree = "<group>"; };
 		240ED420194400B000A8E300 /* RBPersistenceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceService.m; sourceTree = "<group>"; };
 		240ED422194400C300A8E300 /* RBPersistenceServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBPersistenceServiceTests.m; sourceTree = "<group>"; };
@@ -117,6 +118,8 @@
 		24BD45CD1945637700665551 /* RedditItemEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditItemEntity.m; sourceTree = "<group>"; };
 		24BD45CF1945639100665551 /* RBRedditBrowserEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBRedditBrowserEntities.h; sourceTree = "<group>"; };
 		24C42C7E193DC9C30082BD27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		24D8AAF8194823D200CEAE97 /* RedditItemEntity+RBExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RedditItemEntity+RBExtensions.h"; sourceTree = "<group>"; };
+		24D8AAF9194823D200CEAE97 /* RedditItemEntity+RBExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RedditItemEntity+RBExtensions.m"; sourceTree = "<group>"; };
 		24DA44BE193E967D00EFE6BC /* RedditBrowserTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RedditBrowserTests-Prefix.pch"; sourceTree = "<group>"; };
 		32DAB1ADBDE54143940025E4 /* Pods-RedditBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditBrowserTests.xcconfig"; path = "Pods/Pods-RedditBrowserTests.xcconfig"; sourceTree = "<group>"; };
 		5D32DE1D973E4DB3B00124E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -155,9 +158,9 @@
 		240ED4171942FBD000A8E300 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				240ED4181942FC9E00A8E300 /* RBRedditFeedManager.h */,
-				240ED4191942FC9E00A8E300 /* RBRedditFeedManager.m */,
-				240ED41B1942FD1400A8E300 /* RBRedditFeedManagerTests.m */,
+				240ED4181942FC9E00A8E300 /* RBSubredditManager.h */,
+				240ED4191942FC9E00A8E300 /* RBSubredditManager.m */,
+				240ED41B1942FD1400A8E300 /* RBSubredditManagerTests.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -368,6 +371,8 @@
 				24BD45CC1945637700665551 /* RedditItemEntity.h */,
 				24BD45CD1945637700665551 /* RedditItemEntity.m */,
 				24BD45CF1945639100665551 /* RBRedditBrowserEntities.h */,
+				24D8AAF8194823D200CEAE97 /* RedditItemEntity+RBExtensions.h */,
+				24D8AAF9194823D200CEAE97 /* RedditItemEntity+RBExtensions.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				244D5A5A19416DF400DD151E /* RBSubredditModel.m in Sources */,
 				240ED40B1942EC0900A8E300 /* RBURLValidator.m in Sources */,
 				244D5A5919416DF400DD151E /* RBNetworkService.m in Sources */,
+				24D8AAFA194823D200CEAE97 /* RedditItemEntity+RBExtensions.m in Sources */,
 				2453CB3B194782EB00CEC1F1 /* RBPersistenceServiceFactory.m in Sources */,
 				240ED421194400B000A8E300 /* RBPersistenceService.m in Sources */,
 				244D5A5E19416DF400DD151E /* RBSubredditTableViewCell.m in Sources */,
@@ -559,7 +565,7 @@
 				244D5A5C19416DF400DD151E /* RBSubredditRouter.m in Sources */,
 				244D5A6019416DF400DD151E /* RBSubredditViewController.m in Sources */,
 				24429722193DA20E00207CAF /* RBAppDelegate.m in Sources */,
-				240ED41A1942FC9E00A8E300 /* RBRedditFeedManager.m in Sources */,
+				240ED41A1942FC9E00A8E300 /* RBSubredditManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +580,7 @@
 				244D5A6419416E5400DD151E /* RBNetworkServiceTests.m in Sources */,
 				244D5A6219416E0000DD151E /* RBSubredditRouterTests.m in Sources */,
 				240ED40D1942ECE000A8E300 /* RBURLValidatorTests.m in Sources */,
-				240ED41D1942FD1C00A8E300 /* RBRedditFeedManagerTests.m in Sources */,
+				240ED41D1942FD1C00A8E300 /* RBSubredditManagerTests.m in Sources */,
 				244D5A721941FF7100DD151E /* XCTestCase+ASYAsynchronousTesting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

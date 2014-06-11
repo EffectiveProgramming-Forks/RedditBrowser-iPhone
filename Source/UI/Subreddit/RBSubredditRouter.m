@@ -13,7 +13,7 @@
 @implementation RBSubredditRouter
 
 // STORY: eventually comes from user selection!
-static NSString *kDefaltFeedName = @"ListenToThis";
+static NSString *kDefaltSubredditName = @"listentothis";
 
 // STORY: get rid of this!
 static NSString *kHostname = @"http://www.reddit.com/";
@@ -27,15 +27,15 @@ static NSString *kHostname = @"http://www.reddit.com/";
         _subRedditView = subRedditView;
         _subRedditModel = subRedditModel;
         
-        [subRedditModel fetchSubredditFeed:kDefaltFeedName];
+        [subRedditModel fetchSubreddit:kDefaltSubredditName force:NO];
     }
     return self;
 }
 
 #pragma mark - RBSubredditModelDelegate
 
-- (void)receivedSubredditItems:(NSArray *)items forFeedName:(NSString *)feedName {
-    [_subRedditView setItems:items forFeedName:feedName];
+- (void)receivedItems:(NSArray *)items forSubreddit:(NSString *)feedName {
+    [_subRedditView setItems:items forSubreddit:feedName];
 }
 
 #pragma mark - RBSubredditViewDelegate
@@ -44,6 +44,10 @@ static NSString *kHostname = @"http://www.reddit.com/";
     NSString *permalink = item.permalink;
     NSString *urlAsString = [NSString stringWithFormat:@"%@%@", kHostname, permalink];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlAsString]];
+}
+
+- (void)refreshButtonWasTapped {
+    [_subRedditModel fetchSubreddit:kDefaltSubredditName force:YES];
 }
 
 @end

@@ -5,6 +5,8 @@
 
 @interface RBSubredditRouter (TestExposure) <RBSubredditModelDelegate, RBSubredditViewDelegate>
 
+- (void)refreshButtonWasTapped;
+
 @end
 
 @interface RBSubredditRouterTests : XCTestCase
@@ -17,7 +19,7 @@
 
 @implementation RBSubredditRouterTests
 
-static NSString *kFeedName = @"ListenToThis";
+static NSString *kSubredditName = @"listentothis";
 
 - (void)setUp {
     [super setUp];
@@ -43,18 +45,24 @@ static NSString *kFeedName = @"ListenToThis";
 }
 
 - (void)testRouterRequestsFeedsFromModel {
-    [verifyCount(_mockModel, times(1)) fetchSubredditFeed:kFeedName];
+    [verifyCount(_mockModel, times(1)) fetchSubreddit:kSubredditName force:NO];
+}
+
+- (void)testThatRouterRequestsFeedsFromModelWhenRefreshButtonIsTapped {
+    [_testObject refreshButtonWasTapped];
+    
+    [verifyCount(_mockModel, times(1)) fetchSubreddit:kSubredditName force:YES];
 }
 
 - (void)testRouterUpdatesViewUponReceivingData {
     NSArray *items = @[@"a", @"b", @"c"];
-    [_testObject receivedSubredditItems:items forFeedName:kFeedName];
+    [_testObject receivedItems:items forSubreddit:kSubredditName];
     
-    [verifyCount(_mockView, times(1)) setItems:items forFeedName:kFeedName];
+    [verifyCount(_mockView, times(1)) setItems:items forSubreddit:kSubredditName];
 }
 
 - (void)testThatRouterIsHardcodedToRetrieveListenToThis {
-    [verifyCount(_mockModel, times(1)) fetchSubredditFeed:kFeedName];
+    [verifyCount(_mockModel, times(1)) fetchSubreddit:kSubredditName force:NO];
 }
 
 @end
