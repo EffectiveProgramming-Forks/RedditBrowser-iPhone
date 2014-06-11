@@ -16,7 +16,8 @@
 static NSString *scheme = @"http://";
 static NSString *kHardCodedHostName = @"www.reddit.com";
 static NSTimeInterval kRefreshInterval = 60 * 30;
-static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
+static NSString *kLastNetworkRefreshDate = @"RBLastNetworkRefreshDate";
+static NSString *kSubredditPathTemplate = @"/r/%@.json";
 
 - (id)initWithNetworkService:(RBNetworkService *)networkService
           persistenceServiceFactory:(RBPersistenceServiceFactory *)persistenceServiceFactory {
@@ -34,8 +35,8 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
     NSDate *now = [NSDate date];
     BOOL shouldFetchFromNetwork = (force || [self shouldFetchFromNetwork:now]);
     if (shouldFetchFromNetwork) {
-        NSString *feedNamePath = [NSString stringWithFormat:@"/r/%@.json", subreddit];
-        NSString *urlAsString = [NSString stringWithFormat:@"%@%@%@", scheme, kHardCodedHostName, feedNamePath];
+        NSString *subredditPath = [NSString stringWithFormat:kSubredditPathTemplate, subreddit];
+        NSString *urlAsString = [NSString stringWithFormat:@"%@%@%@", scheme, kHardCodedHostName, subredditPath];
         [_networkService GET:urlAsString completionBlock:^(NSDictionary *response, NSError *error) {
             RBPersistenceService *persistenceService = [_persistenceServiceFactory temporaryPersistenceService];
             if (response && !error) {
@@ -50,11 +51,12 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
                 }
                 
                 // 3. Delete old items -
-                // STORY: handling deletion error
                 NSArray *oldItems = [persistenceService findAllItemsForSubreddit:subreddit notUUID:uuid];
                 for (RBRedditItem *item in oldItems) {
                     [persistenceService deleteRedditItem:item];
                 }
+
+                // STORY: handle save and/or deletion errors
                 
                 // 4. Update timer
                 [[NSUserDefaults standardUserDefaults] setValue:now forKey:kLastNetworkRefreshDate];
@@ -68,7 +70,7 @@ static NSString *kLastNetworkRefreshDate = @"LastNetworkRefreshDate";
                     completionBlock(items);
                 }
             } else {
-                // 1. Bubble error up to UI?
+                // STORY: bubble network error up to UI
                 if (completionBlock) {
                     NSArray *items = [persistenceService findAllItemsForSubreddit:subreddit];
                     completionBlock(items);
